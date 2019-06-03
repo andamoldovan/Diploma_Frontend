@@ -1,0 +1,40 @@
+import React from 'react';
+import {connect} from 'react-redux';
+import {Box, Paragraph, Heading, Image} from 'grommet';
+import '../../../style/top-headlines.scss';
+
+const ArticleContent = (props) => {
+
+    const {title, img, content} = props.openArticleContent;
+
+    let arr = content.split('\n');
+    console.log("CONTENT");
+    console.log(arr);
+    let paragraphs = [];
+    arr.map(element => {
+        paragraphs.push(<Paragraph className={"paragraph-content"} alignSelf={"stretch"}> {element} </Paragraph>);
+        return null;
+    });
+
+    return(
+        <Box>
+            <Box>
+                <Heading alignSelf={"center"} level={1} size={"medium"}> {title} </Heading>
+            </Box>
+            <Box>
+                <Image id={"article-image"} fit={"contain"} src={img}/>
+            </Box>
+            <Box id={"paragraph-box"}>
+                {paragraphs}
+            </Box>
+        </Box>
+    );
+};
+
+const mapStateToProps = (state) => {
+    return {
+        openArticleContent: state.app.openArticleContent,
+    }
+};
+
+export default connect(mapStateToProps, null)(ArticleContent);

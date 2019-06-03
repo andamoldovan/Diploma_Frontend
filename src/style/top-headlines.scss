@@ -1,0 +1,146 @@
+div#main-box {
+  padding-bottom: 25px;
+  border-bottom: 1px solid;
+}
+
+div#main-title-box {
+  margin-top: 3%;
+}
+
+h2#title-heading {
+  margin-left: 18%;
+}
+
+h2#title-heading:hover {
+  color: blue;
+}
+
+div#image-main-box{
+  margin-left: 19vw;
+}
+
+div#socondary-title-box{
+  margin-left: 19vw;
+  margin-top: -3vh;
+}
+
+.show-more-button {
+  border: 2px solid #008080;
+  margin: 2% 45%;
+}
+
+
+div#headlines-menu-bar {
+  position: fixed;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: #45B39D;
+  z-index: 1000;
+}
+
+div#basic-search-box-open {
+  position: absolute;
+  margin-left: 80%;
+}
+
+button#basic-search-icon {
+  position: absolute;
+}
+
+input#basic-search-text {
+  z-index: auto;
+  text-indent: 22px;
+  margin-top: 1.5%;
+  border: 1px solid black;
+  background: white;
+}
+
+div#basic-search-box-close {
+  position: absolute;
+  margin-left: 93%;
+}
+
+h6#publication-name {
+  margin-left: 2%;
+}
+
+h6#publication-original-article {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 19%;
+}
+
+h6#publication-original-article:hover {
+  color: blue;
+}
+
+div#dashboard-tab-main-box {
+  position: fixed;
+  margin-left: 200px;
+}
+
+.domain-button{
+  margin: 6px;
+}
+
+.domain-button:hover{
+  background: #F8F8F8;
+}
+
+div#made-for-you-main-box {
+  position: relative;
+}
+
+div#made-for-you-previous-button {
+  margin-top: 16%;
+  margin-left: 14%;
+  position: absolute
+}
+
+div#made-for-you-next-button {
+  margin-top: 16%;
+  position: absolute;
+  margin-left: 82%;
+}
+
+.paragraph-content {
+  max-width: 100% !important;
+}
+
+div#paragraph-box {
+  margin-left: 6%;
+  margin-right: 6%;
+}
+
+//made for you
+img#made-for-you-image {
+  min-width: 300px;
+  max-width: 400px;
+  max-height: 300px;
+}
+
+div#made-for-you-article-elements {
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 350px;
+}
+
+div#made-for-you-article-main-box {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+div#title-preference-box {
+  position: absolute;
+  margin-left: 20%;
+  margin-top: 6%;
+}
+
+div#main-preference-box {
+   margin-bottom: 26%;
+}
+
+h5#made-for-you-it-to-article:hover{
+  color: blue;
+}
