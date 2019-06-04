@@ -15,7 +15,9 @@ function handleRegisterUser(firstName, lastName, username, email, password, conf
             "username":  username,
             "email": email,
             "password": password,
-            "preferences": []
+            "preferences": [],
+            "readArticles": 0,
+            "favoriteArticles": []
         };
         props.setRegisterNewUser(newUser);
     }else{

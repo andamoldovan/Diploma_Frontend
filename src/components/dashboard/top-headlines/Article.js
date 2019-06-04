@@ -1,15 +1,26 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {Box, Heading, Image, Paragraph} from 'grommet';
+import {Box, Heading, Image, Paragraph, Button} from 'grommet';
+import {Star} from 'grommet-icons';
+import _ from 'lodash';
 import '../../../style/top-headlines.scss';
-import {setArticleContent} from "../../../actions/appActions";
+import {loggedInUser, setArticleContent} from "../../../actions/appActions";
+import {updateFavoriteArticles} from "../../api";
 
 const Article = (props) => {
 
     const {name} = props.data.articleSourceDTO;
-    const {content, description, publishedAt, title, url, urlToImage} = props.data;
+    const {id, content, description, publishedAt, title, url, urlToImage} = props.data;
+    const [favoriteStatus, setFavoriteStatus] = useState({});
 
     const formatedDate = publishedAt.substring(0, 10) +  " : " + publishedAt.substring(11, 19);
+
+    useEffect( () => {
+        const index = _.findIndex(props.currentUser.favoriteArticles, (item) => {return item === id});
+        console.log(id + "  --> " + index);
+        if(index > -1) setFavoriteStatus({'fill' : '#FFD700'});
+        else setFavoriteStatus({'fill' : '#666666'});
+    }, []);
 
     const redirectToContent = () => {
         let articleContent = {
@@ -17,6 +28,9 @@ const Article = (props) => {
             img: urlToImage,
             content: content
         };
+        const currentUser = props.currentUser;
+        currentUser.readArticles = props.currentUser.readArticles + 1;
+        props.setLoggedInUser(currentUser);
         props.setOpenArticleContent(articleContent);
         let win = window.open("http://localhost:3000/main-page/content", '_blank');
         win.focus();
@@ -26,6 +40,32 @@ const Article = (props) => {
         let win = window.open(url, '_blank');
         win.focus();
     };
+
+    const handleFavoriteClick = () => {
+        let favorites = props.currentUser.favoriteArticles;
+        let newFavorites = [];
+        let check = false;
+        if(favorites.length === 0) {
+            newFavorites.push(id);
+        }
+        else {
+            console.log("ELSE");
+            favorites.map(item => {
+                if (item === id) {
+                    if (favoriteStatus.fill === '#666666') newFavorites.push(id);
+                    check = true;
+                } else {
+                    newFavorites.push(item);
+                }
+            });
+            if(check === false) newFavorites.push(id);
+        }
+        let user = props.currentUser;
+        user.favoriteArticles = newFavorites;
+        props.setLoggedInUser(user);
+        (favoriteStatus.fill ===  '#FFD700' ) ? setFavoriteStatus({'fill' : '#666666'}) : setFavoriteStatus({'fill' : '#FFD700'});
+        updateFavoriteArticles(user).then(res => console.log(res));
+    } ;
 
     return(
         <Box id={"main-box"}>
@@ -41,6 +81,7 @@ const Article = (props) => {
                     <Heading id={"publication-name"} alignSelf={"start"} level={6} size={"medium"}>
                         Publication Name: {name}
                     </Heading>
+                    <Button id={"favorite-article"} icon={<Star id={"star-icon"} style={favoriteStatus}/>} onClick={handleFavoriteClick} />
                 </Box>
                 <Box id={"image-main-box"} direction={"row"} >
                     <Box id={"image-box"} height={"medium"} width={"large"}>
@@ -64,10 +105,17 @@ const Article = (props) => {
     );
 };
 
+const mapStateToProps = (state) => {
+    return{
+        currentUser: state.app.currentUser,
+    }
+};
+
 const mapDispatchToProps = (dispatch) => {
     return{
+        setLoggedInUser : (user) => { dispatch(loggedInUser(user)) },
         setOpenArticleContent: (content) => {dispatch(setArticleContent(content))}
     }
 };
 
-export default connect(null, mapDispatchToProps)(Article);
+export default connect(mapStateToProps, mapDispatchToProps)(Article);

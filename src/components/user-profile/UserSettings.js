@@ -5,6 +5,7 @@ import '../../style/user-profile.scss';
 import profile from '../../images/profile-picture.png';
 import Search from './Search';
 import {loggedInUser} from "../../actions/appActions";
+import Favorites from './Favorites';
 
 const UserSettings = (props) => {
 
@@ -40,6 +41,7 @@ const UserSettings = (props) => {
                         <Heading id={"profile-name"} level={3}> {props.currentUser.lastName} {props.currentUser.firstName} </Heading>
                     </Box>
                 </Box>
+                <Favorites />
             </Box>
         </Box>
     );

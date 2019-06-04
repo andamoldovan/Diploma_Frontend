@@ -5,16 +5,23 @@ import {User, SettingsOption, Logout} from 'grommet-icons';
 import {loggedInUser} from "../../actions/appActions";
 import '../../style/user-profile.scss';
 import {logout} from "../api";
+import {updateReadArticles} from "../api";
 
 const UserProfile = (props) => {
 
     let menuItems = [
         {label: 'Logout',  icon: <Logout/>, onClick: () => handleLogoutClick()},
-        {label: 'Settings', icon: <SettingsOption/>, onClick: () => window.location="http://localhost:3000/user-settings"}
+        {label: 'Settings', icon: <SettingsOption/>, onClick: () => handleUserSettingsClick()}
     ];
 
-    let handleLogoutClick = () => {
+    const handleUserSettingsClick = () => {
+        updateReadArticles(props.currentUser).then(res => console.log("updated read articles" + res));
+        window.location="http://localhost:3000/user-settings"
+    };
+
+    const handleLogoutClick = () => {
         logout(props.currentUser).then(res => console.log(res));
+        updateReadArticles(props.currentUser).then(res => console.log("updated read articles" + res));
         props.setLoggedInUser(null);
         window.location = "http://localhost:3000/login";
     };

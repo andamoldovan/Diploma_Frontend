@@ -23,7 +23,52 @@ export function logout(currentUser){
             "username": currentUser.username,
             "email": currentUser.email,
             "password": currentUser.password,
-            "preferences": currentUser.preferences
+            "preferences": currentUser.preferences,
+            "readArticles": currentUser.readArticles,
+            "favoriteArticles": currentUser.favoriteArticles
+        })
+    }).then(res => res.json())
+}
+
+
+export function updateReadArticles(currentUser){
+    return fetch("http://localhost:8080/users/update/readArticles", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( {
+            "id": currentUser.id,
+            "firstName": currentUser.firstName,
+            "lastName": currentUser.lastName,
+            "username": currentUser.username,
+            "email": currentUser.email,
+            "password": currentUser.password,
+            "preferences": currentUser.preferences,
+            "readArticles": currentUser.readArticles,
+            "favoriteArticles": currentUser.favoriteArticles
+        })
+    }).then(res => res.json())
+}
+
+export function updateFavoriteArticles(currentUser){
+    return fetch("http://localhost:8080/users/update/favoriteArticle", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( {
+            "id": currentUser.id,
+            "firstName": currentUser.firstName,
+            "lastName": currentUser.lastName,
+            "username": currentUser.username,
+            "email": currentUser.email,
+            "password": currentUser.password,
+            "preferences": currentUser.preferences,
+            "readArticles": currentUser.readArticles,
+            "favoriteArticles": currentUser.favoriteArticles
         })
     }).then(res => res.json())
 }
@@ -45,7 +90,9 @@ export function registerUser(currentUser){
             "userName": currentUser.username,
             "email": currentUser.email,
             "password": currentUser.password,
-            "preferences": currentUser.preferences
+            "preferences": currentUser.preferences,
+            "readArticles": currentUser.readArticles,
+            "favoriteArticles": currentUser.favoriteArticles
         })
     }).then(res => res.json())
 }
@@ -97,4 +144,25 @@ export function basicSearch(domain, word){
         }
     })
         .then(res => res.json())
+}
+
+export function getFavotiteArticles(currentUser){
+    return fetch("http://localhost:8080/favorites/getArticle", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( {
+            "id": currentUser.id,
+            "firstName": currentUser.firstName,
+            "lastName": currentUser.lastName,
+            "username": currentUser.username,
+            "email": currentUser.email,
+            "password": currentUser.password,
+            "preferences": currentUser.preferences,
+            "readArticles": currentUser.readArticles,
+            "favoriteArticles": currentUser.favoriteArticles
+        })
+    }).then(res => res.json())
 }
