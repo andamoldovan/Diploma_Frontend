@@ -1,6 +1,7 @@
 $light-2: #F2F2F2;
 $light-3: #EDEDED;
 $neutral-3: #00739D;
+$dark-2 : #555555;
 
 div#main-user-profile {
   margin-left: 50%;
@@ -79,4 +80,47 @@ h5#profile-back {
 
 h5#profile-back:hover{
   color: $neutral-3;
+}
+
+div#profile-favorites-box {
+  position: absolute;
+  width: inherit;
+  border: 1px solid green;
+  margin-top: 18%;
+  //height: 67%;
+}
+
+img#favorite-image {
+  width: 12%;
+  border-radius: 35px;
+}
+
+div#favorite-main-box {
+  margin-left: 15%;
+  margin-top: 20px;
+}
+
+h5#favorite-title {
+  position: absolute;
+  margin-left: 12%;
+  max-width: 100%;
+  color: $dark-2;
+}
+
+h5#favorite-title:hover {
+  color: $neutral-3;
+}
+
+p#favorite-paragraph {
+  max-width: 100%;
+}
+
+div#favorite-description-box {
+  position: absolute;
+  margin-left: 13%;
+  margin-top: 2%;
+}
+
+button#favorite-article-star {
+  position: absolute;
 }

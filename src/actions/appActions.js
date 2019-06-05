@@ -4,7 +4,8 @@ import {
     SEARCHED_ARTICLES,
     CREATE_NEW_USER,
     DOMAIN_PAGE_SELECTED,
-    OPENED_ARTICLE_CONTENT} from "./types";
+    OPENED_ARTICLE_CONTENT,
+    UNFAVORITE_ARTICLE} from "./types";
 
 export const buttonCount = (payload) => {
     return {
@@ -44,6 +45,13 @@ export const setDomainPage = (payload) => {
 export const setArticleContent = (payload) => {
     return {
         type: OPENED_ARTICLE_CONTENT,
+        payload: payload
+    }
+};
+
+export const setUnfavoriteArticle = (payload) => {
+    return {
+        type: UNFAVORITE_ARTICLE,
         payload: payload
     }
 };

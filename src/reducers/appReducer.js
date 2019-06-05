@@ -4,7 +4,8 @@ import {
     SEARCHED_ARTICLES,
     CREATE_NEW_USER,
     DOMAIN_PAGE_SELECTED,
-    OPENED_ARTICLE_CONTENT} from "../actions/types";
+    OPENED_ARTICLE_CONTENT,
+    UNFAVORITE_ARTICLE } from "../actions/types";
 
 const initialState = {
     items: 0,
@@ -12,7 +13,8 @@ const initialState = {
     registerNewUser: {},
     searchedArticles: [],
     domainPage: 'headlines',
-    openArticleContent: ''
+    openArticleContent: '',
+    unfavoriteArticle: false
 };
 
 export default function(state = initialState, action) {
@@ -40,6 +42,10 @@ export default function(state = initialState, action) {
         case OPENED_ARTICLE_CONTENT :
             return {
                 ...state, openArticleContent: action.payload
+            };
+        case UNFAVORITE_ARTICLE :
+            return {
+                ...state, unfavoriteArticle: action.payload
             };
         default: return state;
     }

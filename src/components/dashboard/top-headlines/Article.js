@@ -17,7 +17,6 @@ const Article = (props) => {
 
     useEffect( () => {
         const index = _.findIndex(props.currentUser.favoriteArticles, (item) => {return item === id});
-        console.log(id + "  --> " + index);
         if(index > -1) setFavoriteStatus({'fill' : '#FFD700'});
         else setFavoriteStatus({'fill' : '#666666'});
     }, []);
@@ -49,7 +48,6 @@ const Article = (props) => {
             newFavorites.push(id);
         }
         else {
-            console.log("ELSE");
             favorites.map(item => {
                 if (item === id) {
                     if (favoriteStatus.fill === '#666666') newFavorites.push(id);

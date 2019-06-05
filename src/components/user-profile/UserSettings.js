@@ -41,7 +41,9 @@ const UserSettings = (props) => {
                         <Heading id={"profile-name"} level={3}> {props.currentUser.lastName} {props.currentUser.firstName} </Heading>
                     </Box>
                 </Box>
-                <Favorites />
+                <Box id={"profile-favorites-box"}>
+                    <Favorites />
+                </Box>
             </Box>
         </Box>
     );
