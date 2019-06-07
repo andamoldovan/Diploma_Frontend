@@ -6,6 +6,7 @@ import _ from 'lodash';
 import '../../../style/top-headlines.scss';
 import {loggedInUser, setArticleContent} from "../../../actions/appActions";
 import {updateFavoriteArticles} from "../../api";
+import noImage from '../../../images/2.jpg';
 
 const Article = (props) => {
 
@@ -83,7 +84,8 @@ const Article = (props) => {
                 </Box>
                 <Box id={"image-main-box"} direction={"row"} >
                     <Box id={"image-box"} height={"medium"} width={"large"}>
-                        <Image id={"article-image"} fit={"cover"} src={urlToImage}/>
+                        <Image id={"article-image"} fit={"cover"} src={urlToImage} fallback={noImage}/>
+                        {/*<Image id={"article-image"} fit={"cover"} src={noImage}/>*/}
                     </Box>
                     <Box id={"description-main-box"}>
                         <Paragraph margin={"medium"}>

@@ -1,3 +1,6 @@
+$menu-background: #9CC2BD;
+$page-background: #e2eaec;
+
 div#main-box {
   padding-bottom: 25px;
   border-bottom: 1px solid;
@@ -12,7 +15,7 @@ h2#title-heading {
 }
 
 h2#title-heading:hover {
-  color: blue;
+  color: $menu-background;
 }
 
 div#image-main-box{
@@ -25,8 +28,13 @@ div#socondary-title-box{
 }
 
 .show-more-button {
-  border: 2px solid #008080;
+  //border: 2px solid #008080;
+  border: 2px solid $menu-background;
   margin: 2% 45%;
+}
+
+.show-more-button:hover {
+  border: 2px solid black;
 }
 
 
@@ -35,7 +43,7 @@ div#headlines-menu-bar {
   width: 100%;
   padding: 0;
   margin: 0;
-  background: #45B39D;
+  background: $menu-background;
   z-index: 1000;
 }
 
@@ -72,12 +80,12 @@ h6#publication-original-article {
 }
 
 h6#publication-original-article:hover {
-  color: blue;
+  color: $menu-background;
 }
 
 div#dashboard-tab-main-box {
   position: fixed;
-  margin-left: 200px;
+  margin-left: 350px;
 }
 
 .domain-button{

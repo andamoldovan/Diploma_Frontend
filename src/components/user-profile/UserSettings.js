@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {Box, Layer, Heading, Image} from 'grommet';
 import '../../style/user-profile.scss';
-import profile from '../../images/profile-picture.png';
+import profile2 from '../../images/profile-picture-3.jpg';
 import Search from './Search';
 import {loggedInUser} from "../../actions/appActions";
 import Favorites from './Favorites';
@@ -29,7 +29,7 @@ const UserSettings = (props) => {
                 </Layer>
             </Box>
             <Box id={"profile-status-box"}>
-                <Image id={"user-profile-status-image"} src={profile} cover={"fit"} />
+                <Image id={"user-profile-status-image"} src={profile2} cover={"fit"} />
                 <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> User name </Heading>
                 <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> Articles read </Heading>
                 <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> Favorite articles </Heading>
