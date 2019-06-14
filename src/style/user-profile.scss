@@ -2,14 +2,15 @@ $light-2: #F2F2F2;
 $light-3: #EDEDED;
 $neutral-3: #00739D;
 $dark-2 : #555555;
+$menu-background: #9CC2BD;
 
 div#main-user-profile {
   margin-left: 50%;
 }
 
-div#user-settings-slider {
+.user-settings-slider {
   border-right: 1px solid $light-3;
-  background: $light-2;
+  background: $menu-background;
 }
 
 div#profile-status-box {
@@ -61,27 +62,6 @@ input#search-input {
   height: 35px;
 }
 
-h5#profile-logout {
-  margin-top: 75vh;
-  margin-left: 1vw;
-}
-
-h5#profile-logout:hover{
-  color: $neutral-3;
-}
-
-h5#profile-back {
-  margin-top: 96vh;
-  margin-left: 1vw;
-  position: absolute;
-  border: 1px solid black;
-  border-radius: 3px;
-}
-
-h5#profile-back:hover{
-  color: $neutral-3;
-}
-
 div#profile-favorites-box {
   position: absolute;
   width: inherit;
@@ -123,4 +103,55 @@ div#favorite-description-box {
 
 button#favorite-article-star {
   position: absolute;
+}
+
+.user-settings-icon {
+  margin-top: 60px;
+}
+
+button#collapsed-button {
+  margin-top: 22.5%;
+  margin-left: 1.2%;
+  border: 1px solid black;
+  position: absolute;
+  z-index: 100;
+  border-radius: 50%;
+  background:$light-3;
+}
+
+button#expanded-button {
+  position: absolute;
+  margin-top: 22.5%;
+  margin-left: 6.6%;
+  border: 1px solid black;
+  border-radius: 50%;
+  z-index: 100;
+  background:$light-3;
+}
+
+.profile-settings-button {
+  box-shadow: unset !important;
+  border: none;
+}
+
+.profile-settings-button:hover {
+  color:black;
+  border: 1px solid white;
+}
+
+button#profile-logout {
+  margin-top: 55vh;
+}
+
+button#profile-back {
+   margin-top: 24px;
+ }
+
+button#profile-email {
+  margin-top: 65px;
+}
+
+h4#profile-settings-heading{
+  font-style: italic;
+  font-size: 22px;
 }
