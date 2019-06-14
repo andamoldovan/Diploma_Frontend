@@ -1,14 +1,16 @@
+$menu-background: #9CC2BD;
+
 div#login-box {
   margin: 25vh 40vw;
 }
 
 button#login-button {
-   border: 2px solid #008080;
+   border: 2px solid $menu-background;
    margin-left: 15%;
 }
 
 button#register-button {
-  border: 2px solid #008080;
+  border: 2px solid $menu-background;
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -21,7 +23,7 @@ button#register-first-button {
   margin-left: 30vh;
   margin-right: 30vh;
   margin-top: 5vh;
-  border: 2px solid #008080;
+  border: 2px solid $menu-background;
 }
 
 input#register-password-text {
@@ -43,7 +45,7 @@ div#preferences-topics-box {
 }
 
 button#finish-registration-button {
-  border: 2px solid #008080;
+  border: 2px solid $menu-background;
   margin: 2% 45%;
 }
 

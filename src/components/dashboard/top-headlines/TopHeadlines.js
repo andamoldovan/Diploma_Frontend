@@ -16,14 +16,15 @@ const TopHeadlines = (props) => {
         props.setSearchedArticles([]);
         getTopHeadlines(props.currentUser, 20, chunk).then( (data) => {
             if(isSubscribed) setArticles(data);
+            return null;
         });
 
-        return () => {
-            console.log("Component did unmount");
-            getTopHeadlines(props.currentUser, 20, 0).then( (data) => {
-                isSubscribed = false;
-            })
-        }
+        // return () => {
+        //     console.log("Component did unmount");
+        //     getTopHeadlines(props.currentUser, 20, 0).then( (data) => {
+        //         isSubscribed = false;
+        //     })
+        // }
     }, []);
 
     let arr = [];

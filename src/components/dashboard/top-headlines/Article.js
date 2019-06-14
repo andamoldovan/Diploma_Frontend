@@ -13,13 +13,14 @@ const Article = (props) => {
     const {name} = props.data.articleSourceDTO;
     const {id, content, description, publishedAt, title, url, urlToImage} = props.data;
     const [favoriteStatus, setFavoriteStatus] = useState({});
-
+    const [validImage, setValidImage] = useState(urlToImage);
     const formatedDate = publishedAt.substring(0, 10) +  " : " + publishedAt.substring(11, 19);
 
     useEffect( () => {
         const index = _.findIndex(props.currentUser.favoriteArticles, (item) => {return item === id});
         if(index > -1) setFavoriteStatus({'fill' : '#FFD700'});
         else setFavoriteStatus({'fill' : '#666666'});
+
     }, []);
 
     const redirectToContent = () => {
@@ -84,8 +85,7 @@ const Article = (props) => {
                 </Box>
                 <Box id={"image-main-box"} direction={"row"} >
                     <Box id={"image-box"} height={"medium"} width={"large"}>
-                        <Image id={"article-image"} fit={"cover"} src={urlToImage} fallback={noImage}/>
-                        {/*<Image id={"article-image"} fit={"cover"} src={noImage}/>*/}
+                        <img onError={() => setValidImage(noImage)} id={"article-image"} src={validImage} />
                     </Box>
                     <Box id={"description-main-box"}>
                         <Paragraph margin={"medium"}>
