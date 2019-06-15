@@ -10,7 +10,7 @@ const AscendButton = () => {
 
     return(
         <Box id={"ascend-main-box"}>
-            <Button id={"ascend-button"} icon={<Ascend />} onClick={handleAscendClick} />
+            <Button id={"ascend-button"} icon={<Ascend color={'black'}/>} onClick={handleAscendClick} />
         </Box>
     );
 };

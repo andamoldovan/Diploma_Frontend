@@ -1,0 +1,36 @@
+$menu-background: #9CC2BD;
+$page-background: #e2eaec;
+
+.headlines-menu-bar {
+  position: fixed;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: $menu-background;
+  z-index: 1000;
+}
+
+button#search-return-button {
+  margin-left: 50%;
+}
+
+div#search-box{
+  position: absolute;
+  margin-left: 33%;
+
+  div:first-child{
+    flex-direction: row;
+    label {
+      margin-top: 17px;
+      position: absolute;
+      color: black;
+    }
+  }
+
+  div:nth-child(2){
+    margin-left: 70px;
+    div input {
+      margin-top: -3px;
+    }
+  }
+}

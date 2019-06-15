@@ -26,10 +26,10 @@ const BasicSearch = (props) => {
 
     let openState = (state === true) ? <Box id={"basic-search-box-open"} direction={"row"}>
                                              <TextInput id={"basic-search-text"} onChange={event => searchQuery(event.target.value)}/>
-                                             <Button id={"basic-search-icon"} icon={<Search/>} onClick={() => setState(false)} />
+                                             <Button id={"basic-search-icon"} icon={<Search color={'black'}/>} onClick={() => setState(false)} />
                                        </Box>
                                     : <Box id={"basic-search-box-close"} direction={"row"}>
-                                             <Button id={"basic-search-icon"} icon={<Search/>} onClick={() => setState(true)}/>
+                                             <Button id={"basic-search-icon"} icon={<Search color={'black'}/>} onClick={() => setState(true)}/>
                                       </Box>;
 
     return(

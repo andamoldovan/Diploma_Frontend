@@ -146,6 +146,10 @@ export function basicSearch(domain, word){
         .then(res => res.json())
 }
 
+export function getAllArticles(){
+    return fetch()
+}
+
 export function getFavotiteArticles(currentUser){
     return fetch("http://localhost:8080/favorites/getArticle", {
         method: 'POST',

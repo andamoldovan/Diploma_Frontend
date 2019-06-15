@@ -15,6 +15,7 @@ import Preferences from './components/registration/Preferences';
 import MainPage from './components/main-page/MainPage';
 import Dashboard from './components/dashboard/Dashboard';
 import UserSettings from './components/user-profile/UserSettings';
+import AdvancedSearch from './components/advanced-search/AdvancedSearch';
 
 const Root = ({store}) => (
     <Provider store={store}>
@@ -28,6 +29,7 @@ const Root = ({store}) => (
                         <Route path={'/main-page'} component={Dashboard} exact/>
                         <Route path={'/main-page/content'} component={ArticleContent} />
                         <Route path={'/user-settings'} component={UserSettings} />
+                        <Route path={'/advanced-search'} component={AdvancedSearch} />
                 </BrowserRouter>
         </PersistGate>
     </Provider>

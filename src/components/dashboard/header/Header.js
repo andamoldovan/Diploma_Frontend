@@ -4,18 +4,15 @@ import {Box,  Button} from 'grommet';
 import AscendButton from './AscendButton';
 import BasicSearch from './BasicSearch';
 import UserProfile from '../../user-profile/UserProfile';
-import TopHeadlines from "../top-headlines/TopHeadlines";
-import DomainDashboard from "../top-headlines/DomainHeadlines";
 import {setDomainPage} from "../../../actions/appActions";
+import AdvancedSearchButton from './AdvancedSearchButton';
 
-
-//plain={true} hoverIndicator={'light-2'}
 
 const Header = (props) => {
     const [domain, setDomain] = useState('headlines');
 
     return(
-        <Box id={"headlines-menu-bar"} direction={"row"}>
+        <Box className={"headlines-menu-bar"} direction={"row"}>
             <AscendButton/>
             <Box id={"dashboard-tab-main-box"} direction={"row"}>
                 <Button className={'domain-button'} label={"Headlines"} color={"light-3"} onClick={() => props.setDomainPage('headlines')}/>
@@ -33,6 +30,9 @@ const Header = (props) => {
             </Box>
             <Box>
                 <UserProfile />
+            </Box>
+            <Box>
+                <AdvancedSearchButton />
             </Box>
         </Box>
     );

@@ -28,7 +28,7 @@ const UserProfile = (props) => {
 
     return(
         <Box id={"main-user-profile"}>
-            <Menu icon={<User />} items={menuItems} />
+            <Menu icon={<User color={'black'} />} items={menuItems} />
         </Box>
     );
 };

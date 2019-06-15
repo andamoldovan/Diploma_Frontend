@@ -43,7 +43,7 @@ div#socondary-title-box{
 }
 
 
-div#headlines-menu-bar {
+.headlines-menu-bar {
   position: fixed;
   width: 100%;
   padding: 0;
@@ -156,4 +156,9 @@ div#main-preference-box {
 
 h5#made-for-you-it-to-article:hover{
   color: blue;
+}
+
+div#advanced-search-button {
+  position: absolute;
+  margin-left: 3vw;
 }
