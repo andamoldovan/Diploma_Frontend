@@ -9,7 +9,6 @@ import AdvancedSearchButton from './AdvancedSearchButton';
 
 
 const Header = (props) => {
-    const [domain, setDomain] = useState('headlines');
 
     return(
         <Box className={"headlines-menu-bar"} direction={"row"}>

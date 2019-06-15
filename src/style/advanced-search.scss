@@ -1,5 +1,7 @@
 $menu-background: #9CC2BD;
 $page-background: #e2eaec;
+$light-3: #EDEDED;
+$light-2: #F2F2F2;
 
 .headlines-menu-bar {
   position: fixed;
@@ -16,21 +18,73 @@ button#search-return-button {
 
 div#search-box{
   position: absolute;
-  margin-left: 33%;
+  margin-left: 15%;
 
   div:first-child{
     flex-direction: row;
     label {
-      margin-top: 17px;
+      margin-top: 12px;
       position: absolute;
       color: black;
+      font-size: 22px;
+      font-weight: 400;
     }
   }
 
   div:nth-child(2){
-    margin-left: 70px;
+    margin-left: 92px;
     div input {
       margin-top: -3px;
     }
   }
+}
+
+div#advances-search-split-box {
+  position: absolute;
+  width: 100vw;
+  height: 95vh;
+  margin-top: 47px;
+}
+
+div#left-split-component{
+  float: left;
+  width: 20%;
+  background: $light-3;
+}
+
+div#right-split-component{
+  float: right;
+  width: 80%;
+  background: $light-2;
+}
+
+.filter-options-element{
+  background: $light-3;
+}
+
+h5#filter-options-title{
+  margin: 0;
+}
+
+div#filter-check-box-1{
+  label{
+    margin-right: 25%;
+  }
+}
+
+div#filter-check-box-2{
+  label{
+    margin-right: 20%;
+  }
+}
+
+div#filter-check-box-3{
+  label{
+    margin-right: 18%;
+  }
+}
+
+div#filter-footer {
+  margin-top: 90%;
+  margin-left: 5%;
 }

@@ -5,7 +5,8 @@ import {
     CREATE_NEW_USER,
     DOMAIN_PAGE_SELECTED,
     OPENED_ARTICLE_CONTENT,
-    UNFAVORITE_ARTICLE} from "./types";
+    UNFAVORITE_ARTICLE,
+    ADVANCED_SEARCH_FILTER} from "./types";
 
 export const buttonCount = (payload) => {
     return {
@@ -52,6 +53,13 @@ export const setArticleContent = (payload) => {
 export const setUnfavoriteArticle = (payload) => {
     return {
         type: UNFAVORITE_ARTICLE,
+        payload: payload
+    }
+};
+
+export const setAdvancedSearchFilter = (payload) => {
+    return {
+        type: ADVANCED_SEARCH_FILTER,
         payload: payload
     }
 };
