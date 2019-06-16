@@ -11,6 +11,7 @@ const DomainHeadlines = (props) => {
     const [chunk, setChunk] = useState(1);
 
     useEffect( () => {
+        setArticles([]);
         getArticlesByCategory(props.currentUser, 20, chunk, props.chosenDomain).then(data => {
             setArticles(data);
         });

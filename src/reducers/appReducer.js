@@ -6,7 +6,8 @@ import {
     DOMAIN_PAGE_SELECTED,
     OPENED_ARTICLE_CONTENT,
     UNFAVORITE_ARTICLE,
-    ADVANCED_SEARCH_FILTER} from "../actions/types";
+    ADVANCED_SEARCH_FILTER, SOLR_SEARCH_RESULTS
+} from "../actions/types";
 
 const initialState = {
     items: 0,
@@ -16,7 +17,8 @@ const initialState = {
     domainPage: 'headlines',
     openArticleContent: '',
     unfavoriteArticle: false,
-    advancedSearchFilter: []
+    advancedSearchFilter: [],
+    solrSearchResults: [],
 };
 
 export default function(state = initialState, action) {
@@ -52,6 +54,10 @@ export default function(state = initialState, action) {
         case ADVANCED_SEARCH_FILTER :
             return {
                 ...state, advancedSearchFilter: action.payload
+            };
+        case SOLR_SEARCH_RESULTS :
+            return {
+                ...state, solrSearchResults: action.payload
             };
         default: return state;
     }

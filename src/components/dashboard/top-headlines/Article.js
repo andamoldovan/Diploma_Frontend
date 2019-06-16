@@ -85,7 +85,7 @@ const Article = (props) => {
                 </Box>
                 <Box id={"image-main-box"} direction={"row"} >
                     <Box id={"image-box"} height={"medium"} width={"large"}>
-                        <img onError={() => setValidImage(noImage)} id={"article-image"} src={validImage} />
+                        <img onError={() => setValidImage(noImage)} id={"article-image"} src={validImage} alt={"No Image"}/>
                     </Box>
                     <Box id={"description-main-box"}>
                         <Paragraph margin={"medium"}>

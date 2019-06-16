@@ -146,8 +146,16 @@ export function basicSearch(domain, word){
         .then(res => res.json())
 }
 
-export function getAllArticles(){
-    return fetch()
+export function solrGetAllArticles(currentUser, chunk){
+    return fetch("http://localhost:8080/solr?chunk=" + chunk + "&chunkSize=5", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(currentUser)
+    })
+        .then(res => res.json())
 }
 
 export function getFavotiteArticles(currentUser){

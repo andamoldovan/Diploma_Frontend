@@ -2,6 +2,7 @@ import React from 'react';
 import {Box} from 'grommet';
 import Header from './Header';
 import FilterOptions from './FilterOptions';
+import SearchResults from './SearchResults';
 
 const AdvancedSearch = () => {
     return(
@@ -12,7 +13,7 @@ const AdvancedSearch = () => {
                     <FilterOptions />
                 </Box>
                 <Box id={'right-split-component'}>
-                    Right
+                    <SearchResults />
                 </Box>
             </Box>
         </Box>

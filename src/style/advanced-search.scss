@@ -1,5 +1,6 @@
 $menu-background: #9CC2BD;
 $page-background: #e2eaec;
+$text-color: #0E6655;
 $light-3: #EDEDED;
 $light-2: #F2F2F2;
 
@@ -87,4 +88,26 @@ div#filter-check-box-3{
 div#filter-footer {
   margin-top: 90%;
   margin-left: 5%;
+}
+
+h4#advanced-search-heading {
+  max-width: 100%;
+}
+
+h4#advanced-search-heading:hover {
+  color: $menu-background;
+}
+
+.advanced-search-paragraph {
+  max-width: 100%;
+}
+
+div#advanced-search-main-box {
+  margin: 20px 25% 1% 15%;
+  border-bottom: 1px solid black;
+}
+
+p#advanced-search-author {
+  margin-top: 0;
+  color: $text-color;
 }

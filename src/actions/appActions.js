@@ -6,7 +6,8 @@ import {
     DOMAIN_PAGE_SELECTED,
     OPENED_ARTICLE_CONTENT,
     UNFAVORITE_ARTICLE,
-    ADVANCED_SEARCH_FILTER} from "./types";
+    ADVANCED_SEARCH_FILTER,
+    SOLR_SEARCH_RESULTS} from "./types";
 
 export const buttonCount = (payload) => {
     return {
@@ -60,6 +61,13 @@ export const setUnfavoriteArticle = (payload) => {
 export const setAdvancedSearchFilter = (payload) => {
     return {
         type: ADVANCED_SEARCH_FILTER,
+        payload: payload
+    }
+};
+
+export const setSolrSearchResults = (payload) => {
+    return {
+        type: SOLR_SEARCH_RESULTS,
         payload: payload
     }
 };

@@ -28,9 +28,6 @@ const FavoriteArticle = (props) => {
         let favorites = props.currentUser.favoriteArticles;
         let newFavorites = [];
         let check = false;
-        console.log("CHECK");
-        console.log(props.unfavoriteArticle);
-        console.log("CHECK");
         if(favorites.length === 0) newFavorites.push(id);
         else {
             favorites.map(item => {
