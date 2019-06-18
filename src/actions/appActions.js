@@ -7,7 +7,10 @@ import {
     OPENED_ARTICLE_CONTENT,
     UNFAVORITE_ARTICLE,
     ADVANCED_SEARCH_FILTER,
-    SOLR_SEARCH_RESULTS} from "./types";
+    SOLR_SEARCH_RESULTS,
+    SOLR_RESULT_PAGE,
+    IS_FILTERED_SEARCH,
+    FILTER_BY_DOMAIN} from "./types";
 
 export const buttonCount = (payload) => {
     return {
@@ -68,6 +71,27 @@ export const setAdvancedSearchFilter = (payload) => {
 export const setSolrSearchResults = (payload) => {
     return {
         type: SOLR_SEARCH_RESULTS,
+        payload: payload
+    }
+};
+
+export const setSolrResultPage = (payload) => {
+    return {
+        type: SOLR_RESULT_PAGE,
+        payload: payload
+    }
+};
+
+export const setIsFilteredSearch = (payload) => {
+    return {
+        type: IS_FILTERED_SEARCH,
+        payload: payload
+    }
+};
+
+export const setFilterByDomain = (payload) => {
+    return {
+        type: FILTER_BY_DOMAIN,
         payload: payload
     }
 };

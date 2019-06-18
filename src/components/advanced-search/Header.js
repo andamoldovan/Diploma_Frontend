@@ -7,7 +7,7 @@ import SearchBar from './SearchBar';
 
 const Header = () => {
     const handleReturnClick = () => {
-        window.location = "http:/localhost:3000/main-page";
+        window.location = "/main-page";
 
     };
     return(

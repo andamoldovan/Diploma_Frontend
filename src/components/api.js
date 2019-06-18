@@ -158,6 +158,28 @@ export function solrGetAllArticles(currentUser, chunk){
         .then(res => res.json())
 }
 
+export function solrFullTextSearch(text){
+    return fetch("http://localhost:8080/solr/fullTextSearch?text=" + text, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.json())
+}
+
+export function solrSarchByAttribute(text, attribute){
+    return fetch("http://localhost:8080/solr/attributeSearch?text=" + text + "&attr=" + attribute, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.json());
+}
+
 export function getFavotiteArticles(currentUser){
     return fetch("http://localhost:8080/favorites/getArticle", {
         method: 'POST',

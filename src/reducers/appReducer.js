@@ -6,7 +6,11 @@ import {
     DOMAIN_PAGE_SELECTED,
     OPENED_ARTICLE_CONTENT,
     UNFAVORITE_ARTICLE,
-    ADVANCED_SEARCH_FILTER, SOLR_SEARCH_RESULTS
+    ADVANCED_SEARCH_FILTER,
+    SOLR_SEARCH_RESULTS,
+    SOLR_RESULT_PAGE,
+    IS_FILTERED_SEARCH,
+    FILTER_BY_DOMAIN
 } from "../actions/types";
 
 const initialState = {
@@ -19,6 +23,9 @@ const initialState = {
     unfavoriteArticle: false,
     advancedSearchFilter: [],
     solrSearchResults: [],
+    solrResultPage: 1,
+    isFilteredSearch: false,
+    filterByDomain: null
 };
 
 export default function(state = initialState, action) {
@@ -58,6 +65,18 @@ export default function(state = initialState, action) {
         case SOLR_SEARCH_RESULTS :
             return {
                 ...state, solrSearchResults: action.payload
+            };
+        case SOLR_RESULT_PAGE :
+            return {
+                ...state, solrResultPage: action.payload
+            };
+        case IS_FILTERED_SEARCH :
+            return {
+                ...state, isFilteredSearch: action.payload
+            };
+        case FILTER_BY_DOMAIN :
+            return {
+                ...state, filterByDomain: action.payload
             };
         default: return state;
     }

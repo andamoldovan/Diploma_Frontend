@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {Box, Button, Heading, CheckBox, Grommet} from 'grommet';
-import {setAdvancedSearchFilter} from "../../actions/appActions";
+import {Box, Button, Heading, CheckBox, Grommet, DropButton} from 'grommet';
+import {setAdvancedSearchFilter, setFilterByDomain} from "../../actions/appActions";
 
 
 const myTheme = {
@@ -16,6 +16,20 @@ const myTheme = {
             control: {'light': '#9CC2BD'},
             text: {'light': 'black'}
         },
+    }
+};
+
+const dropMenuButton = {
+    global: {
+        colors: {
+            control: {'light': 'white'},
+            text: {'light': 'black'}
+        },
+    },
+    text: {
+        medium: {
+            height: '16px'
+        }
     }
 };
 
@@ -37,7 +51,7 @@ const FilterOptions = (props) => {
         if(disabledStatus){
             setTitle(false); setAuthor(false); setSource(false);
             setDomain(false); setDescription(false); setContent(false);
-            props.setAdvancedSearchFilter([]);
+            //props.setAdvancedSearchFilter([]);
         }
     }, [disabledStatus]);
 
@@ -49,6 +63,7 @@ const FilterOptions = (props) => {
       if(domain) filters.push('domain');
       if(description) filters.push('description');
       if(content) filters.push('content');
+      if(fullTextSearch) filters.push('full-text-search');
       props.setAdvancedSearchFilter(filters);
     };
 
@@ -70,13 +85,28 @@ const FilterOptions = (props) => {
                         <CheckBox label={'Title'} disabled={disabledStatus} checked={title} onChange={() => setTitle(!title)}/>
                         <CheckBox label={'Author'} disabled={disabledStatus} checked={author} onChange={() => setAuthor(!author)}/>
                     </Box>
-                    <Box id={'filter-check-box-2'} direction={'row'} margin={{top: 'small', bottom: 'medium'}}>
-                        <CheckBox label={'Source'} disabled={disabledStatus} checked={source} onChange={() => setSource(!source)}/>
-                        <CheckBox label={'Domain'} disabled={disabledStatus} checked={domain} onChange={() => setDomain(!domain)}/>
-                    </Box>
                     <Box id={'filter-check-box-3'} direction={'row'} margin={{top: 'small', bottom: 'medium'}}>
                         <CheckBox label={'Content'} disabled={disabledStatus} checked={content} onChange={() => setContent(!content)}/>
                         <CheckBox label={'Description'} disabled={disabledStatus} checked={description} onChange={() => setDescription(!description)}/>
+                    </Box>
+                    <Box id={'filter-check-box-2'} direction={'row'} margin={{top: 'small', bottom: 'medium'}}>
+                        <CheckBox label={'Source'} disabled={disabledStatus} checked={source} onChange={() => setSource(!source)}/>
+                        {/*<CheckBox label={'Domain'} disabled={disabledStatus} checked={domain} onChange={() => setDomain(!domain)}/>*/}
+                        <DropButton label={"Domain"} dropAlign={{top: 'bottom', right: 'right'}} onOpen={() =>props.setFilterByDomain(null)} dropContent={
+                            <Grommet theme={dropMenuButton}>
+                                <Box>
+                                    <Button label={"all domains"} onClick={() => props.setFilterByDomain(null)}/>
+                                    <Button label={"headlines"} onClick={() => props.setFilterByDomain('headlines')}/>
+                                    <Button label={"business"} onClick={() => props.setFilterByDomain('business')}/>
+                                    <Button label={"entertainment"} onClick={() => props.setFilterByDomain('entertainment')}/>
+                                    <Button label={"general"} onClick={() => props.setFilterByDomain('general')}/>
+                                    <Button label={"health"} onClick={() => props.setFilterByDomain('health')}/>
+                                    <Button label={"science"} onClick={() => props.setFilterByDomain('science')}/>
+                                    <Button label={"sports"} onClick={() => props.setFilterByDomain('sports')}/>
+                                    <Button label={"technology"} onClick={() => props.setFilterByDomain('technology')}/>
+                                </Box>
+                            </Grommet>
+                        }/>
                     </Box>
                 </Box>
                 <Box className={'filter-options-element'} margin={{top: 'medium', left: 'small'}}>
@@ -108,7 +138,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        setAdvancedSearchFilter: (filters) => {dispatch(setAdvancedSearchFilter(filters))}
+        setAdvancedSearchFilter: (filters) => {dispatch(setAdvancedSearchFilter(filters))},
+        setFilterByDomain: (domain) => {dispatch(setFilterByDomain(domain))}
     }
 };
 

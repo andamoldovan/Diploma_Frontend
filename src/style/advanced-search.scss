@@ -75,13 +75,13 @@ div#filter-check-box-1{
 
 div#filter-check-box-2{
   label{
-    margin-right: 20%;
+    margin-right: 17%;
   }
 }
 
 div#filter-check-box-3{
   label{
-    margin-right: 18%;
+    margin-right: 16%;
   }
 }
 
@@ -110,4 +110,35 @@ div#advanced-search-main-box {
 p#advanced-search-author {
   margin-top: 0;
   color: $text-color;
+}
+
+div#page-selector-box {
+  margin-left: 40%;
+}
+
+h3#page-number-heading {
+  margin-left: 2%;
+  margin-bottom: 33px;
+}
+
+button#next-chapter-button {
+  margin-left: 2%;
+}
+
+button#prev-chapter-button:hover {
+  svg {
+    stroke: $menu-background;
+    path{
+      fill: $menu-background !important;
+    }
+  }
+}
+
+button#next-chapter-button:hover {
+  svg {
+    stroke: $menu-background;
+    path{
+      fill: $menu-background !important;
+    }
+  }
 }
