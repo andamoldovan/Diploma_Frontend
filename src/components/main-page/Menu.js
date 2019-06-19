@@ -10,7 +10,7 @@ const MenuBar = () => {
     return(
         <Box id={"main-page-menu-bar"} direction={"row"}>
             <Box>
-                <Menu icon={<User />} items={menuItems} />
+                <Menu icon={<User color={'black'} />} items={menuItems} />
             </Box>
         </Box>
     );

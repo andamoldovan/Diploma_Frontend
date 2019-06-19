@@ -1,8 +1,9 @@
-import React, { useEffect} from 'react';
+import React, { useState} from 'react';
 import {connect} from "react-redux";
 import {Box, Button, Heading} from 'grommet';
 import NewsSubject from './NewsSubject';
 import {registerUser} from '../api';
+import Notification from '../Notification';
 
 import business from '../../images/business.jpg';
 import sport from '../../images/sport.jpg';
@@ -14,12 +15,29 @@ import technology from '../../images/technology.jpg';
 
 
 const Preferences = (props) => {
+    const [notification, setNotification] = useState(false);
+    const [notificationMsg, setNotificationMsg] = useState('');
 
     const handleFinishRegistration = () => {
         let user = props.registerNewUser;
-        registerUser(user).then( res => console.log(res));
-
-        window.location = "http://localhost:3000";
+        if(user.preferences.length < 2){
+            setNotification(true);
+            setNotificationMsg("You cannot register without selecting at least 2 news topics");
+            setTimeout(() => {
+                setNotification(false);
+            }, 1500);
+        }else{
+            setNotification(true);
+            setNotificationMsg("Congratulations! Your registration is complete. You will be redirected to the main page");
+            setTimeout(() => {
+                setNotification(false);
+            }, 3000);
+            registerUser(user).then( res => {
+                setTimeout(() => {
+                    window.location = "http://localhost:3000";
+                }, 2000);
+            });
+        }
     };
 
     return(
@@ -39,6 +57,7 @@ const Preferences = (props) => {
             <Box>
                 <Button id={'finish-registration-button'} label={"Finish"} onClick={handleFinishRegistration}/>
             </Box>
+            {notification && <Notification message={notificationMsg} onClose={() => setNotification(false)}/>}
         </Box>
     );
 };

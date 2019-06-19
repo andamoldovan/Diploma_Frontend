@@ -35,8 +35,6 @@ const NewsSubject = (props) => {
                 if(element !== props.text.toLowerCase()) updatedPreferences.push(element);
             } );
             currentUser.preferences = updatedPreferences;
-            console.log("CURRENT USER");
-            console.log(currentUser);
             props.setRegisterNewUser(currentUser);
         }else{
             currentPreferences.push(props.text.toLowerCase());
