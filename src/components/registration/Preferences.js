@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import {connect} from "react-redux";
-import {Box, Button, Heading} from 'grommet';
+import {Box, Button, Heading, Grommet} from 'grommet';
 import NewsSubject from './NewsSubject';
 import {registerUser} from '../api';
 import Notification from '../Notification';
@@ -13,6 +13,14 @@ import entartainment from '../../images/entertainment.jpg';
 import health from '../../images/health.jpg';
 import technology from '../../images/technology.jpg';
 
+const myTheme = {
+    global: {
+        colors: {
+            control: {'light': '#9CC2BD'},
+            text: {'light': 'black'}
+        },
+    }
+};
 
 const Preferences = (props) => {
     const [notification, setNotification] = useState(false);
@@ -27,37 +35,52 @@ const Preferences = (props) => {
                 setNotification(false);
             }, 1500);
         }else{
-            setNotification(true);
-            setNotificationMsg("Congratulations! Your registration is complete. You will be redirected to the main page");
-            setTimeout(() => {
-                setNotification(false);
-            }, 3000);
             registerUser(user).then( res => {
-                setTimeout(() => {
-                    window.location = "http://localhost:3000";
-                }, 2000);
+                console.log("RES");
+                console.log(res);
+                if(res.id !== null) {
+                    setNotification(true);
+                    setNotificationMsg("Congratulations! Your registration is complete. You will be redirected to the main page");
+                    setTimeout(() => {
+                        setNotification(false);
+                    }, 3000);
+                    setTimeout(() => {
+                        window.location = "http://localhost:3000";
+                    }, 2000);
+                }else{
+                    setNotification(true);
+                    setNotificationMsg("User already exists, choose another one!");
+                    setTimeout(() => {
+                        setNotification(false);
+                    }, 3000);
+                    setTimeout(() => {
+                        window.location = "http://localhost:3000/register";
+                    }, 2000);
+                }
             });
         }
     };
 
     return(
         <Box>
-            <Box id={"preferences-heading"}>
-                <Heading level={1} textAlign={"center"}> Choose your favorite news subjects! </Heading>
-            </Box>
-            <Box id={"preferences-topics-box"}>
-                <NewsSubject text={"Business"} image={business} />
-                <NewsSubject text={"Sports"} image={sport} />
-                <NewsSubject text={"Science"} image={science} />
-                <NewsSubject text={"General"} image={general} />
-                <NewsSubject text={"Entertainment"} image={entartainment} />
-                <NewsSubject text={"Technology"} image={technology} />
-                <NewsSubject text={"Health"} image={health} />
-            </Box>
-            <Box>
-                <Button id={'finish-registration-button'} label={"Finish"} onClick={handleFinishRegistration}/>
-            </Box>
-            {notification && <Notification message={notificationMsg} onClose={() => setNotification(false)}/>}
+            <Grommet theme={myTheme}>
+                <Box id={"preferences-heading"}>
+                    <Heading level={1} textAlign={"center"}> Choose your favorite news subjects! </Heading>
+                </Box>
+                <Box id={"preferences-topics-box"}>
+                    <NewsSubject text={"Business"} image={business} />
+                    <NewsSubject text={"Sports"} image={sport} />
+                    <NewsSubject text={"Science"} image={science} />
+                    <NewsSubject text={"General"} image={general} />
+                    <NewsSubject text={"Entertainment"} image={entartainment} />
+                    <NewsSubject text={"Technology"} image={technology} />
+                    <NewsSubject text={"Health"} image={health} />
+                </Box>
+                <Box>
+                    <Button id={'finish-registration-button'} label={"Finish"} onClick={handleFinishRegistration}/>
+                </Box>
+                {notification && <Notification message={notificationMsg} onClose={() => setNotification(false)}/>}
+            </Grommet>
         </Box>
     );
 };

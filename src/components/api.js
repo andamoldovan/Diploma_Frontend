@@ -16,17 +16,7 @@ export function logout(currentUser){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify( {
-            "id": currentUser.id,
-            "firstName": currentUser.firstName,
-            "lastName": currentUser.lastName,
-            "username": currentUser.username,
-            "email": currentUser.email,
-            "password": currentUser.password,
-            "preferences": currentUser.preferences,
-            "readArticles": currentUser.readArticles,
-            "favoriteArticles": currentUser.favoriteArticles
-        })
+        body: JSON.stringify( currentUser)
     }).then(res => res.json())
 }
 
@@ -38,17 +28,7 @@ export function updateReadArticles(currentUser){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify( {
-            "id": currentUser.id,
-            "firstName": currentUser.firstName,
-            "lastName": currentUser.lastName,
-            "username": currentUser.username,
-            "email": currentUser.email,
-            "password": currentUser.password,
-            "preferences": currentUser.preferences,
-            "readArticles": currentUser.readArticles,
-            "favoriteArticles": currentUser.favoriteArticles
-        })
+        body: JSON.stringify( currentUser)
     }).then(res => res.json())
 }
 
@@ -59,17 +39,7 @@ export function updateFavoriteArticles(currentUser){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify( {
-            "id": currentUser.id,
-            "firstName": currentUser.firstName,
-            "lastName": currentUser.lastName,
-            "username": currentUser.username,
-            "email": currentUser.email,
-            "password": currentUser.password,
-            "preferences": currentUser.preferences,
-            "readArticles": currentUser.readArticles,
-            "favoriteArticles": currentUser.favoriteArticles
-        })
+        body: JSON.stringify( currentUser)
     }).then(res => res.json())
 }
 
@@ -85,26 +55,13 @@ export function updateEmailSchedule(currentUser){
 }
 
 export function registerUser(currentUser){
-
-    console.log("USERNAME");
-    console.log(currentUser.username);
     return fetch("http://localhost:8080/users/saveUser", {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify( {
-            "id": currentUser.id,
-            "firstName": currentUser.firstName,
-            "lastName": currentUser.lastName,
-            "userName": currentUser.username,
-            "email": currentUser.email,
-            "password": currentUser.password,
-            "preferences": currentUser.preferences,
-            "readArticles": currentUser.readArticles,
-            "favoriteArticles": currentUser.favoriteArticles
-        })
+        body: JSON.stringify( currentUser)
     }).then(res => res.json())
 }
 
@@ -115,15 +72,7 @@ export function getTopHeadlines(currentUser, chunkSize, chunk){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            "id": currentUser.id,
-            "firstName": currentUser.firstName,
-            "lastName": currentUser.lastName,
-            "username": currentUser.username,
-            "email": currentUser.email,
-            "password": currentUser.password,
-            "preferences": currentUser.preferences
-        })
+        body: JSON.stringify(currentUser)
     }).then(res => res.json())
 }
 
@@ -134,15 +83,7 @@ export function getArticlesByCategory(currentUser, chunkSize, chunk, category){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            "id": currentUser.id,
-            "firstName": currentUser.firstName,
-            "lastName": currentUser.lastName,
-            "username": currentUser.username,
-            "email": currentUser.email,
-            "password": currentUser.password,
-            "preferences": currentUser.preferences
-        })
+        body: JSON.stringify(currentUser)
     }).then(res => res.json())
 }
 
@@ -199,16 +140,6 @@ export function getFavotiteArticles(currentUser){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify( {
-            "id": currentUser.id,
-            "firstName": currentUser.firstName,
-            "lastName": currentUser.lastName,
-            "username": currentUser.username,
-            "email": currentUser.email,
-            "password": currentUser.password,
-            "preferences": currentUser.preferences,
-            "readArticles": currentUser.readArticles,
-            "favoriteArticles": currentUser.favoriteArticles
-        })
+        body: JSON.stringify( currentUser)
     }).then(res => res.json())
 }
