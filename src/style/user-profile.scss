@@ -151,7 +151,20 @@ button#profile-email {
   margin-top: 65px;
 }
 
-h4#profile-settings-heading{
+.profile-settings-heading{
   font-style: italic;
   font-size: 22px;
+}
+
+div#email-settings-layer {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+input#masked-input-email {
+  margin-top: 50%;
+}
+
+button#email-settings-button {
+  margin-top: 50vh;
 }

@@ -73,6 +73,17 @@ export function updateFavoriteArticles(currentUser){
     }).then(res => res.json())
 }
 
+export function updateEmailSchedule(currentUser){
+    return fetch("http://localhost:8080/users/update/emailScheduler", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(currentUser)
+    }).then(res => res.json())
+}
+
 export function registerUser(currentUser){
 
     console.log("USERNAME");
@@ -156,6 +167,7 @@ export function solrGetAllArticles(currentUser, chunk){
         body: JSON.stringify(currentUser)
     })
         .then(res => res.json())
+        .catch( ex => console.log("Exception " + ex));
 }
 
 export function solrFullTextSearch(text){

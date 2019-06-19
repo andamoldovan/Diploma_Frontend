@@ -10,7 +10,8 @@ import {
     SOLR_SEARCH_RESULTS,
     SOLR_RESULT_PAGE,
     IS_FILTERED_SEARCH,
-    FILTER_BY_DOMAIN
+    FILTER_BY_DOMAIN,
+    OPEN_EMAIL_SCHEDULER
 } from "../actions/types";
 
 const initialState = {
@@ -25,7 +26,8 @@ const initialState = {
     solrSearchResults: [],
     solrResultPage: 1,
     isFilteredSearch: false,
-    filterByDomain: null
+    filterByDomain: null,
+    openEmailScheduler: false,
 };
 
 export default function(state = initialState, action) {
@@ -77,6 +79,10 @@ export default function(state = initialState, action) {
         case FILTER_BY_DOMAIN :
             return {
                 ...state, filterByDomain: action.payload
+            };
+        case OPEN_EMAIL_SCHEDULER :
+            return {
+                ...state, openEmailScheduler: action.payload
             };
         default: return state;
     }

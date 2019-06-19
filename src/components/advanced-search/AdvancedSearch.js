@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {connect} from 'react-redux';
 import {Box} from 'grommet';
 import Header from './Header';
 import FilterOptions from './FilterOptions';
 import SearchResults from './SearchResults';
+import {setFilterByDomain, setSolrSearchResults} from "../../actions/appActions";
 
-const AdvancedSearch = () => {
+const AdvancedSearch = (props) => {
+    useEffect(() => {
+        props.setSolrSearchResults(null);
+        props.setFilterByDomain(null);
+    }, []);
+
     return(
         <Box>
             <Header />
@@ -20,4 +27,11 @@ const AdvancedSearch = () => {
     );
 };
 
-export default AdvancedSearch;
+const mapDispatchToProps = (dispatch) => {
+    return{
+        setSolrSearchResults: (articles) => {dispatch(setSolrSearchResults(articles))},
+        setFilterByDomain: (domain) => {dispatch(setFilterByDomain(domain))}
+    }
+};
+
+export default connect(null, mapDispatchToProps)(AdvancedSearch);

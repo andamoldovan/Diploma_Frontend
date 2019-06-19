@@ -10,7 +10,8 @@ import {
     SOLR_SEARCH_RESULTS,
     SOLR_RESULT_PAGE,
     IS_FILTERED_SEARCH,
-    FILTER_BY_DOMAIN} from "./types";
+    FILTER_BY_DOMAIN,
+    OPEN_EMAIL_SCHEDULER} from "./types";
 
 export const buttonCount = (payload) => {
     return {
@@ -92,6 +93,13 @@ export const setIsFilteredSearch = (payload) => {
 export const setFilterByDomain = (payload) => {
     return {
         type: FILTER_BY_DOMAIN,
+        payload: payload
+    }
+};
+
+export const setOpenEmailScheduler = (payload) => {
+    return {
+        type: OPEN_EMAIL_SCHEDULER,
         payload: payload
     }
 };

@@ -26,6 +26,9 @@ const SearchBar = (props) => {
             if(props.isFilteredSearch !== false) props.setIsFilteredSearch(false);
            solrGetAllArticles(props.currentUser, props.solrResultPage).then(res => {
                props.setSolrSearchResults(res);
+           }).catch(ex => {
+               console.log("Exception occured at solr search");
+               props.setSolrSearchResults([])
            });
         }else{
             if(props.isFilteredSearch !== true) props.setIsFilteredSearch(true);

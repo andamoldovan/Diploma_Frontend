@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, Layer, Button} from "grommet";
-import {loggedInUser} from "../../actions/appActions";
+import {loggedInUser, setOpenEmailScheduler} from "../../actions/appActions";
 import connect from "react-redux/es/connect/connect";
 import {MailOption, Logout, Return, SettingsOption} from "grommet-icons";
 
@@ -15,10 +15,14 @@ const CollapsedMenu = (props) => {
         window.location = "http://localhost:3000/main-page";
     };
 
+    const handleEmailSchedule = () => {
+        props.setOpenEmailScheduler(true);
+    };
+
     return(
         <Box>
             <Layer className={"user-settings-slider"} full={"vertical"} modal={false} position={'left'}>
-                <Button className={'user-settings-icon'} icon={<MailOption color={'black'} />} onClick={() => console.log("mail Option")} />
+                <Button className={'user-settings-icon'} icon={<MailOption color={'black'} />} onClick={handleEmailSchedule} />
                 <Button className={'user-settings-icon'} icon={<Logout color={'black'}/>} onClick={handleLogout} />
                 <Button className={'user-settings-icon'} icon={<Return color={'black'}/>} onClick={handleGoBack} />
             </Layer>
@@ -28,7 +32,8 @@ const CollapsedMenu = (props) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setLoggedInUser : (user) => { dispatch(loggedInUser(user)) }
+        setLoggedInUser : (user) => { dispatch(loggedInUser(user)) },
+        setOpenEmailScheduler: (value) => {dispatch(setOpenEmailScheduler(value))}
     }
 };
 

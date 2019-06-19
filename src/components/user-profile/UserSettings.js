@@ -8,6 +8,7 @@ import Search from './Search';
 import Favorites from './Favorites';
 import ExpandedMenu from './ExpandedMenu';
 import CollapsedMenu from './CollapsedMenu';
+import EmailSettings from './EmailSettings';
 
 const UserSettings = (props) => {
     const [buttonState, setButtonState] = useState(false);
@@ -33,8 +34,8 @@ const UserSettings = (props) => {
             <Button id={buttonId} icon={buttonIcon} onClick={() => setButtonState(!buttonState)} />
             <Box id={"profile-status-box"}>
                 <Image id={"user-profile-status-image"} src={profile2} cover={"fit"} />
-                <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> User name </Heading>
-                <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> Articles read </Heading>
+                <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> User name: {props.currentUser.username}</Heading>
+                <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> Articles read: {props.currentUser.readArticles} </Heading>
                 <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> Favorite articles </Heading>
             </Box>
             <Box id={"favorite-articles-box"}>
@@ -48,6 +49,7 @@ const UserSettings = (props) => {
                     <Favorites />
                 </Box>
             </Box>
+            {props.openEmailScheduler && <EmailSettings isOpen={props.openArticleContent} currentUser={props.currentUser}/>}
         </Box>
     );
 };
@@ -55,13 +57,8 @@ const UserSettings = (props) => {
 const mapStateToProps = (state) => {
     return{
         currentUser: state.app.currentUser,
+        openEmailScheduler: state.app.openEmailScheduler
     }
 };
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         setLoggedInUser : (user) => { dispatch(loggedInUser(user)) }
-//     }
-// };
 
 export default connect(mapStateToProps, null)(UserSettings);

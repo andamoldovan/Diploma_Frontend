@@ -91,7 +91,6 @@ const FilterOptions = (props) => {
                     </Box>
                     <Box id={'filter-check-box-2'} direction={'row'} margin={{top: 'small', bottom: 'medium'}}>
                         <CheckBox label={'Source'} disabled={disabledStatus} checked={source} onChange={() => setSource(!source)}/>
-                        {/*<CheckBox label={'Domain'} disabled={disabledStatus} checked={domain} onChange={() => setDomain(!domain)}/>*/}
                         <DropButton label={"Domain"} dropAlign={{top: 'bottom', right: 'right'}} onOpen={() =>props.setFilterByDomain(null)} dropContent={
                             <Grommet theme={dropMenuButton}>
                                 <Box>
