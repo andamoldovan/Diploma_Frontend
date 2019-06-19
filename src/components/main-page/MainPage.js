@@ -1,14 +1,13 @@
 import React from 'react';
 import {Box, Heading} from 'grommet';
 import MenuBar from './Menu';
+import StartDashboard from './StartDashboard';
 
 const MainPage = () => {
     return(
         <Box>
-            <Heading  id={"main-page-title"} level={2} selfAlign={"centre"}>
-                Main Page
-            </Heading>
             <MenuBar />
+            <StartDashboard />
         </Box>
     );
 };

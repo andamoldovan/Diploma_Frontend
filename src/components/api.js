@@ -143,3 +143,13 @@ export function getFavotiteArticles(currentUser){
         body: JSON.stringify( currentUser)
     }).then(res => res.json())
 }
+
+export function getStartDashboardArticles(){
+    return fetch("http://localhost:8080/domain-news/getStartDashboard", {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json())
+}

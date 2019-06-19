@@ -8,6 +8,62 @@ div#main-page-menu-bar {
   background: $menu-background;
 }
 
-h2#main-page-title {
-  margin-top: 60px;
+.main-page-box{
+  position: absolute;
+  width: 25%;
+  height: 25%;
+  //border: 1px solid black;
+}
+
+.first-row-box{
+  margin-top: 2.5%;
+}
+
+.second-row-box{
+  margin-top: 14.7%;
+}
+
+.third-row-box{
+  margin-top: 26.8%;
+}
+
+.forth-row-box{
+  margin-top: 39.1%;
+  height: 20.5% !important;
+}
+
+.second-column{
+  margin-left: 25%;
+}
+
+.third-column{
+  margin-left: 50%;
+}
+
+.forth-column{
+  margin-left: 75%;
+}
+
+img#start-article-image {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+h4#start-dashboard-heading {
+  position: absolute;
+  margin: 0;
+  display: none;
+}
+
+div#start-dashboard-article:hover{
+  opacity:0.7;
+  //background-image:
+  //      linear-gradient(
+  //        rgba(242, 140, 140, 0.5),
+  //        rgba(0, 0, 0, 0.5)
+  //      );
+  h4{
+    display: initial;
+    color:black
+  }
 }
