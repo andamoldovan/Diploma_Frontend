@@ -153,3 +153,25 @@ export function getStartDashboardArticles(){
         }
     }).then(res => res.json())
 }
+
+export function updateArticleRatingsForUser(currentUser){
+    return fetch("http://localhost:8080/users/update/articleRatings", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( currentUser)
+    }).then(res => res.json())
+}
+
+export function getArticlePredictionsForUser(currentUser){
+    return fetch("http://localhost:8080/users/recommendations/getRecommendation", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( currentUser)
+    }).then(res => res.json())
+}

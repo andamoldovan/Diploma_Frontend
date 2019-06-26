@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {Box, Heading, Image, Paragraph, Button} from 'grommet';
-import {Star} from 'grommet-icons';
+import {Favorite, Star} from 'grommet-icons';
 import _ from 'lodash';
 import '../../../style/top-headlines.scss';
 import {loggedInUser, setArticleContent} from "../../../actions/appActions";
-import {updateFavoriteArticles} from "../../api";
+import {updateFavoriteArticles, updateArticleRatingsForUser} from "../../api";
 import noImage from '../../../images/2.jpg';
 
 const Article = (props) => {
@@ -13,13 +13,25 @@ const Article = (props) => {
     const {name} = props.data.articleSourceDTO;
     const {id, content, description, publishedAt, title, url, urlToImage} = props.data;
     const [favoriteStatus, setFavoriteStatus] = useState({});
+    const [rating, setRating] = useState([]);
     const [validImage, setValidImage] = useState(urlToImage);
     const formatedDate = publishedAt.substring(0, 10) +  " : " + publishedAt.substring(11, 19);
 
     useEffect( () => {
         const index = _.findIndex(props.currentUser.favoriteArticles, (item) => {return item === id});
-        if(index > -1) setFavoriteStatus({'fill' : '#FFD700'});
+        if(index > -1) setFavoriteStatus({'fill' : '#f44259'});
         else setFavoriteStatus({'fill' : '#666666'});
+
+        let rating = props.currentUser.articleRatings[id];
+        if(rating !== undefined){
+            let ratings = [{}];
+            const yellowFill = {'fill': '#f1f441'};
+            const blackFill = {'fill': '#666666'};
+            for(let i = 1; i <= 5; i++){
+                (i <= rating) ? ratings.push(yellowFill) : ratings.push(blackFill);
+            }
+            setRating(ratings);
+        }
 
     }, []);
 
@@ -63,9 +75,29 @@ const Article = (props) => {
         let user = props.currentUser;
         user.favoriteArticles = newFavorites;
         props.setLoggedInUser(user);
-        (favoriteStatus.fill ===  '#FFD700' ) ? setFavoriteStatus({'fill' : '#666666'}) : setFavoriteStatus({'fill' : '#FFD700'});
+        (favoriteStatus.fill ===  '#f44259' ) ? setFavoriteStatus({'fill' : '#666666'}) : setFavoriteStatus({'fill' : '#f44259'});
         updateFavoriteArticles(user).then(res => console.log(res));
     } ;
+
+    const handleRatingClick = (element) => {
+        console.log(element);
+        let currentUser = props.currentUser;
+        let ratings = currentUser.articleRatings;
+        let rating = ratings[id];
+        if(rating === undefined){
+            let newRating = [{}];
+            const yellowFill = {'fill': '#f1f441'};
+            const blackFill = {'fill': '#666666'};
+            for(let i = 1; i <= 5; i++){
+                (i <= element) ? newRating.push(yellowFill) : newRating.push(blackFill);
+            }
+            setRating(newRating);
+            ratings[id]= element;
+            currentUser.articleRatings = ratings;
+            props.setLoggedInUser(currentUser);
+            updateArticleRatingsForUser(currentUser).then(res => console.log(res));
+        }
+    }
 
     return(
         <Box id={"main-box"}>
@@ -81,7 +113,7 @@ const Article = (props) => {
                     <Heading id={"publication-name"} alignSelf={"start"} level={6} size={"medium"}>
                         Publication Name: {name}
                     </Heading>
-                    <Button id={"favorite-article"} icon={<Star id={"star-icon"} style={favoriteStatus}/>} onClick={handleFavoriteClick} />
+                    <Button id={"favorite-article"} icon={<Favorite id={"star-icon"} style={favoriteStatus}/>} onClick={handleFavoriteClick} />
                 </Box>
                 <Box id={"image-main-box"} direction={"row"} >
                     <Box id={"image-box"} height={"medium"} width={"large"}>
@@ -91,6 +123,14 @@ const Article = (props) => {
                         <Paragraph margin={"medium"}>
                             {description}
                         </Paragraph>
+                        <Box id={"rating-box"} direction={'row'}>
+                            <Heading id={'rating-system-heading'} margin={{left: 'medium'}} style={{'fontStyle': 'italic'}} level={5} > Rate the article: </Heading>
+                            <Button icon={<Star style={rating[1]}/>} onClick={() => handleRatingClick(1)} />
+                            <Button icon={<Star style={rating[2]}/>} onClick={() => handleRatingClick(2)} />
+                            <Button icon={<Star style={rating[3]}/>} onClick={() => handleRatingClick(3)} />
+                            <Button icon={<Star style={rating[4]}/>} onClick={() => handleRatingClick(4)} />
+                            <Button icon={<Star style={rating[5]}/>} onClick={() => handleRatingClick(5)} />
+                        </Box>
                     </Box>
                 </Box>
                 <Box>

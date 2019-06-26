@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {Box, Image, Heading, Paragraph, Button} from 'grommet';
-import {Star} from 'grommet-icons';
+import {Favorite} from 'grommet-icons';
 import {loggedInUser, setArticleContent, setUnfavoriteArticle} from "../../actions/appActions";
 import {updateFavoriteArticles} from "../api";
 
@@ -59,7 +59,7 @@ const FavoriteArticle = (props) => {
           <Heading id={"favorite-title"} level={5} margin={"xsmall"} alignSelf={"stretch"} onClick={redirectToContent}> {title} </Heading>
           <Box id={"favorite-image-box"}>
               <Image  id={"favorite-image"} src={img} />
-              <Button id={"favorite-article-star"} icon={<Star id={"star-icon"} style={favoriteStatus}/>} onClick={handleFavoriteClick} />
+              <Button id={"favorite-article-star"} icon={<Favorite id={"star-icon"} style={favoriteStatus}/>} onClick={handleFavoriteClick} />
           </Box>
           <Box id={"favorite-description-box"}>
               <Paragraph id={"favorite-paragraph"} margin={"small"} size={"small"}> {description} </Paragraph>

@@ -48,7 +48,8 @@ const Register = (props) =>{
                     "preferences": [],
                     "readArticles": 0,
                     "favoriteArticles": [],
-                    "emailSchedule": ""
+                    "emailSchedule": "",
+                    "articleRatings": {}
                 };
                 props.setRegisterNewUser(newUser);
                 window.location = "http://localhost:3000/register/preferences";

@@ -23,6 +23,7 @@ const Header = (props) => {
                 <Button className={'domain-button'} label={"Sport"} color={"light-3"} onClick={() => props.setDomainPage('sports')}/>
                 <Button className={'domain-button'} label={"Technology"} color={"light-3"} onClick={() => props.setDomainPage('technology')}/>
                 <Button className={'domain-button'} label={"Made For You"} color={"light-6"} onClick={() => props.setDomainPage('made-for-you')}/>
+                <Button className={'domain-button'} label={"Recommendations"} color={"light-6"} onClick={() => props.setDomainPage('recommendations')}/>
             </Box>
             <Box>
                 <BasicSearch />

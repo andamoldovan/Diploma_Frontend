@@ -164,3 +164,33 @@ div#advanced-search-button {
   position: absolute;
   margin-left: 3vw;
 }
+
+svg#star-icon {
+  path {
+    fill: inherit !important;
+  }
+}
+
+div#prediction-image-box {
+  height: 450px;
+}
+
+img#prediction-article-image {
+  width: 100%;
+  height: 100%;
+}
+
+div#predictions-box{
+  margin-top: 20px;
+  margin-left: 250px;
+}
+
+button#prediction-button{
+  width: 60%;
+  margin-left: 20%;
+}
+
+div#prediction-caret-buttons {
+  margin-top: 40px;
+  margin-left: 40%;
+}
