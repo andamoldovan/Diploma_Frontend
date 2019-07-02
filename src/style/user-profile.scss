@@ -42,7 +42,9 @@ div#profile-cover-box {
   position: absolute;
   width: inherit;
   height: 30vh;
-  border: 1px solid red;
+  //border: 1px solid red;
+  border-bottom: 1px solid black;
+  background: $menu-background;
 }
 
 div#profile-name-box {
@@ -65,9 +67,8 @@ input#search-input {
 div#profile-favorites-box {
   position: absolute;
   width: inherit;
-  border: 1px solid green;
+  //border: 1px solid green;
   margin-top: 18%;
-  //height: 67%;
 }
 
 img#favorite-image {

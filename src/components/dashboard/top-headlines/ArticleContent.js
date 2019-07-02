@@ -1,15 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {Box, Paragraph, Heading, Image} from 'grommet';
 import '../../../style/top-headlines.scss';
 
 const ArticleContent = (props) => {
 
+    useEffect(() => {
+        if(props.currentUser === null) window.location = "http://localhost:3000";
+    }, []);
+
     const {title, img, content} = props.openArticleContent;
 
     let arr = content.split('\n');
-    console.log("CONTENT");
-    console.log(arr);
     let paragraphs = [];
     arr.map(element => {
         paragraphs.push(<Paragraph className={"paragraph-content"} alignSelf={"stretch"}> {element} </Paragraph>);
@@ -34,6 +36,7 @@ const ArticleContent = (props) => {
 const mapStateToProps = (state) => {
     return {
         openArticleContent: state.app.openArticleContent,
+        currentUser: state.app.currentUser
     }
 };
 

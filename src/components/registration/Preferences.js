@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import {connect} from "react-redux";
 import {Box, Button, Heading, Grommet} from 'grommet';
 import NewsSubject from './NewsSubject';
@@ -12,6 +12,7 @@ import general from '../../images/general.jpg';
 import entartainment from '../../images/entertainment.jpg';
 import health from '../../images/health.jpg';
 import technology from '../../images/technology.jpg';
+import {registerNewUser} from "../../actions/appActions";
 
 const myTheme = {
     global: {
@@ -25,6 +26,10 @@ const myTheme = {
 const Preferences = (props) => {
     const [notification, setNotification] = useState(false);
     const [notificationMsg, setNotificationMsg] = useState('');
+
+    useEffect(() => {
+        if(props.registerNewUser === null) window.location = "http://localhost:3000/register";
+    }, [])
 
     const handleFinishRegistration = () => {
         let user = props.registerNewUser;
@@ -41,6 +46,7 @@ const Preferences = (props) => {
                 if(res.id !== null) {
                     setNotification(true);
                     setNotificationMsg("Congratulations! Your registration is complete. You will be redirected to the main page");
+                    props.setRegisterNewUser(null);
                     setTimeout(() => {
                         setNotification(false);
                     }, 3000);
@@ -91,5 +97,10 @@ const mapStateToProps = (state) => {
     }
 };
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setRegisterNewUser : (user) => {dispatch(registerNewUser(user))}
+    }
+};
 
-export default connect(mapStateToProps, null)(Preferences);
+export default connect(mapStateToProps, mapDispatchToProps)(Preferences);

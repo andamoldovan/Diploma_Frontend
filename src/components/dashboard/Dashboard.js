@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {Box} from 'grommet';
 import Header from './header/Header';
@@ -10,6 +10,10 @@ import {setDomainPage} from "../../actions/appActions";
 
 
 const Dashboard = (props) => {
+
+    useEffect(() => {
+        if(props.currentUser === null) window.location = "http://localhost:3000";
+    }, [])
 
     let renderedPage = null;
     if(props.domainPage === 'headlines') {

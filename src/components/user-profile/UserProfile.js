@@ -23,7 +23,7 @@ const UserProfile = (props) => {
         logout(props.currentUser).then(res => console.log(res));
         updateReadArticles(props.currentUser).then(res => console.log("updated read articles" + res));
         props.setLoggedInUser(null);
-        window.location = "http://localhost:3000/login";
+        window.location = "http://localhost:3000";
     };
 
     return(

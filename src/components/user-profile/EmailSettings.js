@@ -73,6 +73,9 @@ const EmailSettings = (props) => {
                 <Layer id={'email-settings-layer'} full={'vertical'} position={'right'} onEsc={() => props.setOpenEmailScheduler(false)} onClickOutside={() => props.setOpenEmailScheduler(false)}>
                     <Heading className={"profile-settings-heading"} level={4} alignSelf={"center"}> Email Scheduler </Heading>
                     <Box>
+                        <Heading level={5}> Email is sent at: {props.currentUser.emailSchedule} </Heading>
+                    </Box>
+                    <Box>
                         <MaskedInput id={'masked-input-email'} mask={mask} value={input} onChange={(e) => setInput(e.target.value)} />
                     </Box>
                     <Button id={'email-settings-button'} label={"Update Schedule"} onClick={handleButtonClick}/>
@@ -83,6 +86,12 @@ const EmailSettings = (props) => {
     );
 };
 
+const mapStateToProps = (state) => {
+    return{
+        currentUser: state.app.currentUser
+    }
+};
+
 const mapDispatchToProps = dispatch => {
     return {
         setOpenEmailScheduler: (value) => {dispatch(setOpenEmailScheduler(value))},
@@ -90,4 +99,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(EmailSettings);
+export default connect(mapStateToProps, mapDispatchToProps)(EmailSettings);

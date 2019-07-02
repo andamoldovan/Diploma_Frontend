@@ -41,7 +41,7 @@ const DomainHeadlines = (props) => {
                             <Button className={"show-more-button"} icon={<More />} label={"Show More"} onClick={handleShowMore}/> : null;
 
     return(
-        <Box>
+        <Box className={"news-main-rendered-page"}>
             {arr}
             <Box>
                 {showMoreButton}

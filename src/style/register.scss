@@ -37,9 +37,9 @@ div#preferences-heading {
 
 div#preferences-topics-box {
   display: grid;
-  grid-template-columns: repeat(2, 0fr);
+  grid-template-columns: repeat(2, 0.4fr);
   grid-template-rows: repeat(4, 18vw);
-  margin-left: 25vw;
+  margin-left: 23vw;
   margin-bottom: 50px;
   grid-gap: 30px;
 }

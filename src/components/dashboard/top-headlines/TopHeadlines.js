@@ -54,7 +54,7 @@ const TopHeadlines = (props) => {
                                     : null;
 
     return(
-       <Box >
+       <Box className={"news-main-rendered-page"}>
            {arr}
            <Box>
                {showMoreButton}

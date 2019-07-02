@@ -7,7 +7,7 @@ const ExpandedMenu = (props) => {
 
     const handleLogout = () => {
         props.setLoggedInUser(null);
-        window.location = "http://localhost:3000/login";
+        window.location = "http://localhost:3000";
     };
 
     const handleGoBack = () => {

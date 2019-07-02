@@ -10,6 +10,8 @@ const AdvancedSearch = (props) => {
     useEffect(() => {
         props.setSolrSearchResults(null);
         props.setFilterByDomain(null);
+
+        if(props.currentUser === null) window.location = "http://locahost:3000";
     }, []);
 
     return(
@@ -27,6 +29,12 @@ const AdvancedSearch = (props) => {
     );
 };
 
+const mapStateToProps = (state) => {
+    return{
+        currentUser: state.app.currentUser,
+    }
+};
+
 const mapDispatchToProps = (dispatch) => {
     return{
         setSolrSearchResults: (articles) => {dispatch(setSolrSearchResults(articles))},
@@ -34,4 +42,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(AdvancedSearch);
+export default connect(mapStateToProps, mapDispatchToProps)(AdvancedSearch);

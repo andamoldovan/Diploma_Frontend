@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {Box, Heading, Image, Button} from 'grommet';
 import {FormNext, FormPrevious} from "grommet-icons";
@@ -12,6 +12,10 @@ import EmailSettings from './EmailSettings';
 
 const UserSettings = (props) => {
     const [buttonState, setButtonState] = useState(false);
+
+    useEffect(() => {
+        if(props.currentUser === null) window.location = "http://localhost:3000";
+    }, []);
 
     let buttonId = 'collapsed-button';
     let buttonIcon = <FormNext color={'black'} />;

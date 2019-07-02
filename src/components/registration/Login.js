@@ -46,7 +46,7 @@ const Login = (props) => {
             <Box id={"login-page-title"} align={"center"}>
                 <Heading selfAlign={"center"} level={1}> Login </Heading>
             </Box>
-            <FormField label={'Username'} help={"help"} >
+            <FormField label={'Username'} >
                 <TextInput value={email} onChange={event => setEmail(event.target.value)} />
             </FormField>
             <FormField label={'Password'} >
