@@ -74,8 +74,8 @@ const Recommendations = (props) => {
                 {displayArticles}
             </Box>
             <Box id={'prediction-caret-buttons'} direction={'row'}>
-                <Button icon={<CaretPrevious />} onClick={handlePrevious}/>
-                <Button icon={<CaretNext />} onClick={handleNext}/>
+                <Button className={'button-previous-next'} icon={<CaretPrevious />} onClick={handlePrevious}/>
+                <Button className={'button-previous-next'} icon={<CaretNext />} onClick={handleNext}/>
             </Box>
         </Box>
     );

@@ -4,14 +4,16 @@ import {Box} from 'grommet';
 import _ from 'lodash';
 import Article from './Article';
 import PageBar from './PageBar';
+import Loading from '../Loading';
 
 const SearchResults = (props) => {
     const {solrSearchResults, solrResultPage, isFilteredSearch} = props;
+    const [loading, setLoading] = useState(false);
 
    let arr = [];
    let result = [];
    let displayValues = null;
-   if(solrSearchResults != null) {
+   if(solrSearchResults != null && solrSearchResults.length > 0) {
        solrSearchResults.map(element => {
            if(props.filterByDomain !== null){
                if(element.domain === props.filterByDomain) arr.push(<Article data={element} />)
@@ -23,8 +25,15 @@ const SearchResults = (props) => {
 
     displayValues = (isFilteredSearch) ? result[solrResultPage - 1] : arr;
 
+    useEffect(() => {
+        if(displayValues === null) setLoading(true);
+        else if(displayValues.length === 0) setLoading(true);
+            else setLoading(false);
+    }, [displayValues]);
+
   return(
       <Box>
+          {loading && <Loading />}
           {displayValues}
           <Box>
               <PageBar />

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {Box} from 'grommet/components/Box';
 import {FormField, TextInput, Button, Heading, Grommet} from "grommet";
+import ReactTooltip from 'react-tooltip';
 import '../../style/register.scss';
 import {login} from "../api";
 import {loggedInUser, setDomainPage} from "../../actions/appActions";

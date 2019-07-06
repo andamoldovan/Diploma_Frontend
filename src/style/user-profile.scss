@@ -1,3 +1,4 @@
+$light-1: #F8F8F8;
 $light-2: #F2F2F2;
 $light-3: #EDEDED;
 $neutral-3: #00739D;
@@ -19,6 +20,7 @@ div#profile-status-box {
   margin-top: 150px;
   border: 1px solid black;
   z-index: 100;
+  background: white;
 }
 
 img#user-profile-status-image {
@@ -48,20 +50,28 @@ div#profile-cover-box {
 }
 
 div#profile-name-box {
-  margin-left: 20%;
-  margin-top: 11%;
+  position: absolute;
+  margin-left: 9%;
+  margin-top: 12.5%;
   margin-bottom: 7%;
 }
 
 div#profile-search-box {
-  margin-left: 40%;
-  margin-right: 40%;
-  margin-top: 1%;
+  margin-left: 82%;
+  margin-top: 14%;
+  position: absolute;
+
+  svg {
+    position: absolute;
+    margin-top: 3%;
+    margin-left: 3%;
+  }
 }
 
 input#search-input {
   border-radius: 21px;
   height: 35px;
+  text-indent: 22px;
 }
 
 div#profile-favorites-box {
@@ -168,4 +178,23 @@ input#masked-input-email {
 
 button#email-settings-button {
   margin-top: 50vh;
+}
+
+img#profile-logo {
+  position: absolute;
+  width: 150px;
+  margin-left: 42%;
+  margin-top: -18px;
+}
+
+h5#profile-title-news-gathering{
+  position: absolute;
+  margin: 6.5% 0 0 41.5%;
+}
+
+div#main-tooltip-box {
+  position: absolute;
+  margin-top: 50px;
+  width: fit-content;
+  background: $light-1;
 }

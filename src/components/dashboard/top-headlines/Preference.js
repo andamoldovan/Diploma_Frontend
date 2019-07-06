@@ -57,13 +57,13 @@ const Preference = (props) => {
                 <Heading level={3}> {props.domain.toUpperCase()} </Heading>
             </Box>
             <Box id={"made-for-you-previous-button"}>
-                <Button icon={<CaretPrevious />} onClick={handlePrevious}/>
+                <Button className={'button-previous-next'} icon={<CaretPrevious />} onClick={handlePrevious}/>
             </Box>
             <Box id={"made-for-you-article-elements"} direction={"row"}>
                 {element}
             </Box>
             <Box id={"made-for-you-next-button"}>
-                <Button icon={<CaretNext />} onClick={handleNext}/>
+                <Button className={'button-previous-next'} icon={<CaretNext />} onClick={handleNext}/>
             </Box>
         </Box>
     );

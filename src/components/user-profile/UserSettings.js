@@ -3,12 +3,14 @@ import {connect} from 'react-redux';
 import {Box, Heading, Image, Button} from 'grommet';
 import {FormNext, FormPrevious} from "grommet-icons";
 import '../../style/user-profile.scss';
-import profile2 from '../../images/profile-picture-3.jpg';
-import Search from './Search';
+import profile2 from '../../images/profile-picture-3.png';
+import ProfileSearch from './Search';
 import Favorites from './Favorites';
 import ExpandedMenu from './ExpandedMenu';
 import CollapsedMenu from './CollapsedMenu';
 import EmailSettings from './EmailSettings';
+import logo from '../../images/logo.png';
+
 
 const UserSettings = (props) => {
     const [buttonState, setButtonState] = useState(false);
@@ -37,17 +39,19 @@ const UserSettings = (props) => {
             {menuComponent}
             <Button id={buttonId} icon={buttonIcon} onClick={() => setButtonState(!buttonState)} />
             <Box id={"profile-status-box"}>
-                <Image id={"user-profile-status-image"} src={profile2} cover={"fit"} />
-                <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> User name: {props.currentUser.username}</Heading>
+                <Image id={"user-profile-status-image"} src={profile2} cover={"fit"} style={{'background': 'white'}} />
+                <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> User name: {props.currentUser.userName}</Heading>
                 <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> Articles read: {props.currentUser.readArticles} </Heading>
-                <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> Favorite articles </Heading>
+                <Heading className={"user-profile-status-heading"} level={6} alignSelf={"start"}> Favorite articles: {props.currentUser.favoriteArticles.length} </Heading>
             </Box>
             <Box id={"favorite-articles-box"}>
                 <Box id={"profile-cover-box"}>
-                    <Search />
+                    <ProfileSearch />
                     <Box id={"profile-name-box"}>
                         <Heading id={"profile-name"} level={3}> {props.currentUser.lastName} {props.currentUser.firstName} </Heading>
                     </Box>
+                    <Image id={"profile-logo"} src={logo} />
+                    <Heading id={'profile-title-news-gathering'} level={5}> News Gathering System </Heading>
                 </Box>
                 <Box id={"profile-favorites-box"}>
                     <Favorites />

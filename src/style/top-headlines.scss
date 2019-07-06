@@ -57,10 +57,12 @@ div#socondary-title-box{
 div#basic-search-box-open {
   position: absolute;
   margin-left: 85%;
+  margin-top: 4px;
 }
 
 button#basic-search-icon {
   position: absolute;
+  padding: 10px;
 }
 
 input#basic-search-text {
@@ -69,6 +71,8 @@ input#basic-search-text {
   margin-top: 1.5%;
   border: 1px solid black;
   background: white;
+  border-radius: 32px;
+  height: 35px;
 }
 
 div#basic-search-box-close {
@@ -208,4 +212,13 @@ div#made-for-you-title {
 .main-page-titles-class{
   font-style: italic;
   border-bottom: 3px solid black;
+}
+
+.button-previous-next:hover {
+  svg {
+    polygon {
+      stroke: $menu-background;
+      fill: $menu-background;
+    }
+  }
 }

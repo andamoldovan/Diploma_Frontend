@@ -6,12 +6,13 @@ import TopHeadlines from './top-headlines/TopHeadlines';
 import DomainDashboard from './top-headlines/DomainHeadlines';
 import MadeForYou from './top-headlines/MadeForYou';
 import Recommendations from './top-headlines/Recommendations';
-import {setDomainPage} from "../../actions/appActions";
+import {setDomainPage, setSolrSearchResults} from "../../actions/appActions";
 
 
 const Dashboard = (props) => {
 
     useEffect(() => {
+        props.setSolrSearchResults(null);
         if(props.currentUser === null) window.location = "http://localhost:3000";
     }, [])
 
@@ -50,7 +51,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        setDomainPage: (domain) => {dispatch(setDomainPage(domain))}
+        setDomainPage: (domain) => {dispatch(setDomainPage(domain))},
+        setSolrSearchResults: (articles) => {dispatch(setSolrSearchResults(articles))},
     }
 };
 

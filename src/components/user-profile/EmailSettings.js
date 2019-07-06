@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Box, Layer, Button, Heading, MaskedInput, Grommet} from 'grommet';
 import {loggedInUser, setOpenEmailScheduler} from "../../actions/appActions";
 import Notification from '../Notification';
+import Tooltip from '../Tooltip';
 import {updateEmailSchedule} from "../api";
 
 const myTheme = {
@@ -35,6 +36,7 @@ const mask = [
 
 const EmailSettings = (props) => {
     const [notification, setNotification] = useState(false);
+    const [tooltip, setTooltip] = useState(false);
     const [input, setInput] = useState('');
     const [notificationMessage, setNotificationMessage] = useState('');
     const inputRegex = /^[0-9]{1,2}[:][0-9]{2}$/;
@@ -67,13 +69,16 @@ const EmailSettings = (props) => {
         }
     };
 
+    const currentEmail = (props.currentUser.emailSchedule === "") ? "No previous email schedule set" : props.currentUser.emailSchedule;
+
     return(
         <Box>
             <Grommet theme={myTheme}>
                 <Layer id={'email-settings-layer'} full={'vertical'} position={'right'} onEsc={() => props.setOpenEmailScheduler(false)} onClickOutside={() => props.setOpenEmailScheduler(false)}>
                     <Heading className={"profile-settings-heading"} level={4} alignSelf={"center"}> Email Scheduler </Heading>
                     <Box>
-                        <Heading level={5}> Email is sent at: {props.currentUser.emailSchedule} </Heading>
+                        <Heading level={5} truncate={true} style={{'maxWidth': '240px'}} onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}> Email is sent at: {currentEmail} </Heading>
+                        {tooltip && <Tooltip message={"No previous email schedule set"}/>}
                     </Box>
                     <Box>
                         <MaskedInput id={'masked-input-email'} mask={mask} value={input} onChange={(e) => setInput(e.target.value)} />

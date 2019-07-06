@@ -42,7 +42,7 @@ const Register = (props) =>{
                 const newUser = {
                     "firstName": firstName,
                     "lastName": lastName,
-                    "username":  username,
+                    "userName":  username,
                     "email": email,
                     "password": password,
                     "preferences": [],
