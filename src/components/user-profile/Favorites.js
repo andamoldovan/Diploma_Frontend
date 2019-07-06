@@ -9,14 +9,28 @@ const Favorites = (props) => {
     const [articles, setArticles] = useState([]);
 
     useEffect( () =>{
-        getFavotiteArticles(props.currentUser).then( res => setArticles(res));
+       getFavotiteArticles(props.currentUser).then( res => setArticles(res));
         if(props.unfavoriteArticle === true) props.setUnfavoriteArticle(false);
     }, [props.unfavoriteArticle, props.currentUser]);
 
     let arr = [];
-    (articles.length !== 0) ? articles.map( element => {
-        arr.push(<FavoriteArticle id={element.id} img={element.urlToImage} title={element.title} description={element.description} content={element.content}/>)
-    }) : arr = null;
+    if(props.searchedFavoriteArticles.length === 0){
+        (articles.length !== 0) ? articles.map( element => {
+            arr.push(<FavoriteArticle id={element.id} img={element.urlToImage} title={element.title} description={element.description} content={element.content}/>)
+        }) : arr = null;
+    }else {
+            props.searchedFavoriteArticles.map( element => {
+                arr.push(<FavoriteArticle id={element.id} img={element.urlToImage} title={element.title} description={element.description} content={element.content}/>)
+            })
+    }
+
+
+    console.log("FAVORITES SEARCH")
+    console.log(props.searchedFavoriteArticles.length);
+    console.log("FAVORITE ARTICLES")
+    console.log(articles);
+    console.log("ARR");
+    console.log(arr)
 
     return(
         <Box>
@@ -28,7 +42,8 @@ const Favorites = (props) => {
 const mapStateToProps = (state) => {
     return{
         currentUser: state.app.currentUser,
-        unfavoriteArticle: state.app.unfavoriteArticle
+        unfavoriteArticle: state.app.unfavoriteArticle,
+        searchedFavoriteArticles: state.app.searchedFavoriteArticles,
     }
 };
 

@@ -11,7 +11,8 @@ import {
     SOLR_RESULT_PAGE,
     IS_FILTERED_SEARCH,
     FILTER_BY_DOMAIN,
-    OPEN_EMAIL_SCHEDULER} from "./types";
+    OPEN_EMAIL_SCHEDULER,
+    SEARCHED_ARTICLES_FAVORITES} from "./types";
 
 export const buttonCount = (payload) => {
     return {
@@ -100,6 +101,13 @@ export const setFilterByDomain = (payload) => {
 export const setOpenEmailScheduler = (payload) => {
     return {
         type: OPEN_EMAIL_SCHEDULER,
+        payload: payload
+    }
+};
+
+export const setsearchedFavoriteArticles = (payload) => {
+    return {
+        type: SEARCHED_ARTICLES_FAVORITES,
         payload: payload
     }
 };

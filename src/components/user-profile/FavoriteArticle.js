@@ -50,7 +50,6 @@ const FavoriteArticle = (props) => {
         let user = props.currentUser;
         user.favoriteArticles = newFavorites;
         props.setLoggedInUser(user);
-        (favoriteStatus.fill ===  '#FFD700' ) ? setFavoriteStatus({'fill' : '#F8F8F8'}) : setFavoriteStatus({'fill' : '#FFD700'});
         updateFavoriteArticles(user).then(res => console.log(res));
     };
 

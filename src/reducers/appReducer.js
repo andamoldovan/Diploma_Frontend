@@ -11,7 +11,8 @@ import {
     SOLR_RESULT_PAGE,
     IS_FILTERED_SEARCH,
     FILTER_BY_DOMAIN,
-    OPEN_EMAIL_SCHEDULER
+    OPEN_EMAIL_SCHEDULER,
+    SEARCHED_ARTICLES_FAVORITES
 } from "../actions/types";
 
 const initialState = {
@@ -28,6 +29,7 @@ const initialState = {
     isFilteredSearch: false,
     filterByDomain: null,
     openEmailScheduler: false,
+    searchedFavoriteArticles: []
 };
 
 export default function(state = initialState, action) {
@@ -83,6 +85,10 @@ export default function(state = initialState, action) {
         case OPEN_EMAIL_SCHEDULER :
             return {
                 ...state, openEmailScheduler: action.payload
+            };
+        case SEARCHED_ARTICLES_FAVORITES :
+            return {
+                ...state, searchedFavoriteArticles: action.payload
             };
         default: return state;
     }

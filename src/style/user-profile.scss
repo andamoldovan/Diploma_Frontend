@@ -78,7 +78,9 @@ div#profile-favorites-box {
   position: absolute;
   width: inherit;
   //border: 1px solid green;
-  margin-top: 18%;
+  margin-top: 19%;
+  max-height: 561px;
+  overflow-y: auto;
 }
 
 img#favorite-image {
@@ -89,6 +91,7 @@ img#favorite-image {
 div#favorite-main-box {
   margin-left: 15%;
   margin-top: 20px;
+  margin-bottom: 10vh;
 }
 
 h5#favorite-title {
