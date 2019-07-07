@@ -25,7 +25,8 @@ const Register = (props) =>{
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordType, setPasswordType] = useState('password');
     const [notification, setNotification] = useState(false);
-    const [notificationMsg, setNotificationMsg] = useState(false);
+    const [notificationMsg, setNotificationMsg] = useState('');
+    const [notificationColor, setNotificationColor] = useState('');
 
     let samePasswordMsg = '';
     (password !== confirmPassword) ? samePasswordMsg = "Passwords do not match!" : samePasswordMsg = '';
@@ -34,6 +35,7 @@ const Register = (props) =>{
         if(firstName === '' || lastName === '' || username === '' || email === '' || password === ''){
             setNotification(true);
             setNotificationMsg("Please complete all the fields!");
+            setNotificationColor('critical');
             setTimeout(() => {
                 setNotification(false);
             }, 1500);
@@ -56,6 +58,7 @@ const Register = (props) =>{
             }else{
                 setNotification(true);
                 setNotificationMsg("Passwords do not match!");
+                setNotificationColor('critical');
                 setTimeout(() => {
                     setNotification(false);
                 }, 1500);
@@ -94,7 +97,7 @@ const Register = (props) =>{
                 <Box>
                     <Button id={'register-first-button'} label={"Next"} icon={<FormNext color={'black'}/>} onClick={handleRegisterUser}/>
                 </Box>
-                {notification && <Notification message={notificationMsg} onClose={() => setNotification(false)}/>}
+                {notification && <Notification message={notificationMsg} color={notificationColor} onClose={() => setNotification(false)}/>}
             </Grommet>
         </Box>
     );

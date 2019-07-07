@@ -6,10 +6,14 @@ import {setSolrResultPage} from "../../actions/appActions";
 
 const PageBar = (props) => {
 
-
     const handleNext = () => {
         const next = props.solrResultPage + 1;
-        props.setSolrResultPage(next);
+        if(props.isFilteredSearch && props.solrSearchResults != null){
+            (Math.ceil(props.solrSearchResults.length / 5) > (props.solrResultPage)) ? props.setSolrResultPage(next) : props.setSolrResultPage(next - 1);;
+        }else{
+            props.setSolrResultPage(next);
+        }
+
     };
 
     const handlePrevious = () => {
@@ -29,7 +33,9 @@ const PageBar = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        solrResultPage: state.app.solrResultPage
+        solrResultPage: state.app.solrResultPage,
+        solrSearchResults: state.app.solrSearchResults,
+        isFilteredSearch: state.app.isFilteredSearch,
     }
 };
 

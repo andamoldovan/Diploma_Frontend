@@ -1,10 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
-import {Box, Button} from "grommet";
+import {Box, Button, Grommet} from "grommet";
 import {More} from 'grommet-icons';
 import {getTopHeadlines} from "../../api";
 import Article from './Article';
 import {searchedArticles} from "../../../actions/appActions";
+
+const myTheme = {
+    global: {
+        colors: {
+            control: {'light': '#9CC2BD'},
+            text: {'light': 'black'}
+        },
+    }
+};
 
 const TopHeadlines = (props) => {
     const [articles, setArticles] = useState([]);
@@ -55,10 +64,12 @@ const TopHeadlines = (props) => {
 
     return(
        <Box className={"news-main-rendered-page"}>
-           {arr}
-           <Box>
-               {showMoreButton}
-           </Box>
+           <Grommet theme={myTheme}>
+               {arr}
+               <Box>
+                   {showMoreButton}
+               </Box>
+           </Grommet>
        </Box>
     );
 };

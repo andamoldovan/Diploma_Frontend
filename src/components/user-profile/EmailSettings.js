@@ -39,6 +39,7 @@ const EmailSettings = (props) => {
     const [tooltip, setTooltip] = useState(false);
     const [input, setInput] = useState('');
     const [notificationMessage, setNotificationMessage] = useState('');
+    const [notificationColor, setNotificationColor] = useState('');
     const inputRegex = /^[0-9]{1,2}[:][0-9]{2}$/;
 
     const notificationTimeout = () => {
@@ -50,6 +51,7 @@ const EmailSettings = (props) => {
     const handleButtonClick = () => {
         if(input.match(inputRegex) === null) {
            setNotificationMessage("The time for the schedule is not complete!");
+           setNotificationColor('critical');
            setNotification(true);
            notificationTimeout();
         }else{
@@ -59,10 +61,12 @@ const EmailSettings = (props) => {
                setNotification(true);
                if(res != null){
                    setNotificationMessage("Successfully updated the email schedule!");
+                   setNotificationColor('status-ok');
                    props.setLoggedInUser(user);
                    notificationTimeout();
                }else{
                    setNotificationMessage("Email schedule could not be updated!");
+                   setNotificationColor('critical');
                    notificationTimeout();
                }
             });
@@ -85,7 +89,7 @@ const EmailSettings = (props) => {
                     </Box>
                     <Button id={'email-settings-button'} label={"Update Schedule"} onClick={handleButtonClick}/>
                 </Layer>
-                {notification && <Notification message={notificationMessage} onClose={() => setNotification(false)} />}
+                {notification && <Notification message={notificationMessage} color={notificationColor} onClose={() => setNotification(false)} />}
             </Grommet>
         </Box>
     );

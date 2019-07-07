@@ -26,6 +26,7 @@ const myTheme = {
 const Preferences = (props) => {
     const [notification, setNotification] = useState(false);
     const [notificationMsg, setNotificationMsg] = useState('');
+    const [notificationColor, setNotificationColor] = useState('');
 
     useEffect(() => {
         if(props.registerNewUser === null) window.location = "http://localhost:3000/register";
@@ -36,16 +37,16 @@ const Preferences = (props) => {
         if(user.preferences.length < 2){
             setNotification(true);
             setNotificationMsg("You cannot register without selecting at least 2 news topics");
+            setNotificationColor('critical');
             setTimeout(() => {
                 setNotification(false);
             }, 1500);
         }else{
             registerUser(user).then( res => {
-                console.log("RES");
-                console.log(res);
                 if(res.id !== null) {
                     setNotification(true);
                     setNotificationMsg("Congratulations! Your registration is complete. You will be redirected to the main page");
+                    setNotificationColor('status-ok');
                     props.setRegisterNewUser(null);
                     setTimeout(() => {
                         setNotification(false);
@@ -56,6 +57,7 @@ const Preferences = (props) => {
                 }else{
                     setNotification(true);
                     setNotificationMsg("User already exists, choose another one!");
+                    setNotificationColor('critical');
                     setTimeout(() => {
                         setNotification(false);
                     }, 3000);
@@ -85,7 +87,7 @@ const Preferences = (props) => {
                 <Box>
                     <Button id={'finish-registration-button'} label={"Finish"} onClick={handleFinishRegistration}/>
                 </Box>
-                {notification && <Notification message={notificationMsg} onClose={() => setNotification(false)}/>}
+                {notification && <Notification message={notificationMsg} color={notificationColor} onClose={() => setNotification(false)}/>}
             </Grommet>
         </Box>
     );

@@ -34,11 +34,16 @@ const SearchResults = (props) => {
     }, [displayValues]);
 
     useEffect(() => {
+        console.log('ARR');
+        console.log(arr);
+        console.log('RESULTS');
+        console.log(result);
         if((result === undefined) || (arr != null)) {
             if(result === undefined) setLoading(false);
             if((Math.ceil(arr.length / 5) <= (solrResultPage - 1))) setLoading(false);
         }
     }, [result, arr]);
+
 
   return(
       <Box>

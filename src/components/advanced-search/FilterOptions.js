@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import {Box, Button, Heading, CheckBox, Grommet, DropButton} from 'grommet';
 import {setAdvancedSearchFilter, setFilterByDomain} from "../../actions/appActions";
-
+import Notification from '../Notification';
 
 const myTheme = {
     checkBox : {
@@ -16,6 +16,11 @@ const myTheme = {
             control: {'light': '#9CC2BD'},
             text: {'light': 'black'}
         },
+        focus: {
+            border: {
+                color: '#9CC2BD',
+            }
+        }
     }
 };
 
@@ -42,6 +47,8 @@ const FilterOptions = (props) => {
     const [content, setContent] = useState(false);
     const [fullTextSearch, setFullTextSearch] = useState(false);
     const [disabledStatus, setDisabledStatus] = useState(false);
+    const [notification, setNotification] = useState(false);
+    const [notificationMsg, setNotificationMsg] = useState(false);
 
     useEffect( () => {
         props.setAdvancedSearchFilter([]);
@@ -65,12 +72,22 @@ const FilterOptions = (props) => {
       if(content) filters.push('content');
       if(fullTextSearch) filters.push('full-text-search');
       props.setAdvancedSearchFilter(filters);
+      setNotificationMsg("Filters applied successfully!");
+      setNotification(true);
+      setTimeout(() => {
+          setNotification(false);
+      }, 2000);
     };
 
     const handleCancel = () => {
         setTitle(false); setAuthor(false); setSource(false);
         setDomain(false); setDescription(false); setContent(false);
         props.setAdvancedSearchFilter([]);
+        setNotificationMsg("Filters removed successfully!");
+        setNotification(true);
+        setTimeout(() => {
+            setNotification(false);
+        }, 2000);
     };
 
     return(
@@ -123,6 +140,7 @@ const FilterOptions = (props) => {
                     <Button label={'Apply Filters'} onClick={handleApplyFilters} margin={{left: 'medium'}}/>
                     <Button label={'Cancel'} onClick={handleCancel} margin={{left: 'medium'}}/>
                 </Box>
+                {notification && <Notification message={notificationMsg} color={'status-ok'} onClose={() => setNotification(false)}/>}
             </Grommet>
         </Box>
     );

@@ -1,11 +1,21 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {Box, TextInput, Button} from "grommet";
+import {Box, TextInput, Button, Grommet} from "grommet";
 import {Search} from 'grommet-icons';
 import _ from 'lodash';
 import {basicSearch} from "../../api";
 import {searchedArticles} from "../../../actions/appActions";
 import Notification from '../../Notification';
+
+const myTheme = {
+    global: {
+        focus: {
+            border: {
+                color: '#F8F8F8',
+            }
+        }
+    }
+};
 
 const BasicSearch = (props) => {
     const [state, setState] = useState(false);
@@ -22,7 +32,7 @@ const BasicSearch = (props) => {
         }
         }, 500);
 
-    let noResultsNotification = (notification === true) ? <Notification onClose={() => setNotification(false)} message={"No results returned for the search!"}/> : null;
+    let noResultsNotification = (notification === true) ? <Notification onClose={() => setNotification(false)} message={"No results returned for the search!"} color={'critical'}/> : null;
 
     let openState = (state === true) ? <Box id={"basic-search-box-open"} direction={"row"}>
                                              <TextInput id={"basic-search-text"} onChange={event => searchQuery(event.target.value)}/>
@@ -34,8 +44,10 @@ const BasicSearch = (props) => {
 
     return(
         <Box>
-             {noResultsNotification}
-             {openState}
+            <Grommet theme={myTheme}>
+                {noResultsNotification}
+                {openState}
+            </Grommet>
         </Box>
     );
 };

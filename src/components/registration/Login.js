@@ -59,7 +59,7 @@ const Login = (props) => {
                     return window.location = "http://localhost:3000/register";
                 }} />
             </Box>
-            {notification && <Notification message={"Incorrect Username or Password!"} onClose={() => setNotification(false)}/>}
+            {notification && <Notification message={"Incorrect Username or Password!"} color={'critical'} onClose={() => setNotification(false)}/>}
         </Grommet>
     </Box>
   );
