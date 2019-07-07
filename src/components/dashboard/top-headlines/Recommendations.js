@@ -16,8 +16,6 @@ const Recommendations = (props) => {
 
     let arr = [];
     if(articles.length !== 0){
-        console.log("PREDICTIONS");
-        console.log(articles);
         articles.map(element => {
             arr.push(<RecommendationArticle data={element} />)
         })
@@ -30,15 +28,16 @@ const Recommendations = (props) => {
             displayArticles.push(arr[0]);
             displayArticles.push(null);
         }else if(arr.length === 2){
+            displayArticles.push(null);
             displayArticles.push(arr[0]);
             displayArticles.push(arr[1]);
-            displayArticles.push(null);
         }else{
             displayArticles.push(arr[0]);
             displayArticles.push(arr[1]);
             displayArticles.push(arr[2]);
         }
         setNumber(0);
+        setRender(displayArticles);
     }
 
     const handlePrevious = () => {
@@ -49,6 +48,7 @@ const Recommendations = (props) => {
             displayArticles.push(arr[number + 1]);
             setNumber(number - 1);
         }
+        setRender(displayArticles);
     };
 
     const handleNext = () => {
@@ -63,6 +63,7 @@ const Recommendations = (props) => {
             displayArticles.push(arr[number + 3]);
             setNumber(number + 1);
         }
+        setRender(displayArticles);
     };
 
     return(
@@ -71,7 +72,7 @@ const Recommendations = (props) => {
             <Heading level={1}  className={'main-page-titles-class'}> Article Recommendations</Heading>
             </Box>
             <Box direction={'row'}>
-                {displayArticles}
+                {render}
             </Box>
             <Box id={'prediction-caret-buttons'} direction={'row'}>
                 <Button className={'button-previous-next'} icon={<CaretPrevious />} onClick={handlePrevious}/>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Box, Heading, Grommet, Button} from 'grommet';
+import {Box, Heading, Grommet, Button, Image} from 'grommet';
 import noImage from "../../../images/2.jpg";
 
 const myTheme = {
@@ -27,8 +27,8 @@ const RecommendationArticle = (props) => {
         if(author === null || author === undefined || author === ''){
             setValidAuthor('No Author');
         }
-    }, []);
-
+        setValidImage(urlToImage);
+    }, [urlToImage]);
 
     const handleRedirect = () => {
 

@@ -26,10 +26,19 @@ const SearchResults = (props) => {
     displayValues = (isFilteredSearch) ? result[solrResultPage - 1] : arr;
 
     useEffect(() => {
-        if(displayValues === null) setLoading(true);
-        else if(displayValues.length === 0) setLoading(true);
-            else setLoading(false);
+        if(displayValues == null) setLoading(true);
+           else {
+               if(displayValues.length === 0) setLoading(true);
+               else setLoading(false);
+           }
     }, [displayValues]);
+
+    useEffect(() => {
+        if((result === undefined) || (arr != null)) {
+            if(result === undefined) setLoading(false);
+            if((Math.ceil(arr.length / 5) <= (solrResultPage - 1))) setLoading(false);
+        }
+    }, [result, arr]);
 
   return(
       <Box>
