@@ -31,7 +31,8 @@ const RecommendationArticle = (props) => {
     }, [urlToImage]);
 
     const handleRedirect = () => {
-
+        let win = window.open(url, '_blank');
+        win.focus();
     };
 
     return(
@@ -41,7 +42,7 @@ const RecommendationArticle = (props) => {
                     <img onError={() => setValidImage(noImage)} id={"prediction-article-image"} src={validImage} alt={"No Image"}/>
                 </Box>
                 <Box margin={{bottom: '0'}}>
-                    <Heading level={4} alignSelg={'center'} margin={{top: '0', bottom: '0'}}> {title} </Heading>
+                    <Heading level={4} alignSelg={'center'} margin={{top: '0', bottom: '0'}} > {title} </Heading>
                 </Box>
                 <Box direction={'row'} margin={{top: 'small'}}>
                     <Heading level={4} alignSelg={'center'} style={{'fontStyle': 'italic'}}> Author:  </Heading>

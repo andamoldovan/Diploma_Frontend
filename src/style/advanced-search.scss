@@ -142,3 +142,18 @@ button#next-chapter-button:hover {
     }
   }
 }
+
+h5#search-text-input-title {
+  font-size: 26px;
+  margin: 17px 0 0 10px;
+  font-style: italic;
+  position: absolute;
+}
+
+input#search-text-input {
+  border-bottom: 1px solid black;
+  margin-left: 44%;
+  font-size: 16px;
+  padding-bottom: 4px;
+  margin-top: 4px;
+}

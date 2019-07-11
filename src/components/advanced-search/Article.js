@@ -7,6 +7,7 @@ const Article = (props) => {
     let authorDef = (author === null) ? "No Author Available" : author;
 
     const redirectToArticle = () => {
+        console.log(url)
         let win = window.open(url, '_blank');
         win.focus();
     };

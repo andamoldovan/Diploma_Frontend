@@ -24,7 +24,7 @@ const ArticleContent = (props) => {
                 <Heading alignSelf={"center"} level={1} size={"medium"}> {title} </Heading>
             </Box>
             <Box>
-                <Image id={"article-image"} fit={"contain"} src={img}/>
+                <Image id={"article-image-content"} fit={"contain"} src={img}/>
             </Box>
             <Box id={"paragraph-box"}>
                 {paragraphs}

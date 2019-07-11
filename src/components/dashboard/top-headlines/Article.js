@@ -35,6 +35,10 @@ const Article = (props) => {
 
     }, []);
 
+    useEffect(() => {
+        setValidImage(urlToImage);
+    },  [urlToImage]);
+
     const redirectToContent = () => {
         let articleContent = {
             title: title,

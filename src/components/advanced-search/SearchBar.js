@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import _ from 'lodash';
-import {Box, FormField, TextInput} from 'grommet';
+import {Box, FormField, TextInput, Heading} from 'grommet';
 import {setSolrSearchResults, setSolrResultPage, setIsFilteredSearch} from "../../actions/appActions";
 import {solrGetAllArticles, solrSarchByAttribute, solrFullTextSearch} from "../api";
 
@@ -79,12 +79,14 @@ const SearchBar = (props) => {
 
     return(
         <Box id={'search-box'}>
-            <FormField  label={"Search"}>
-                <TextInput id={'search-text-input'} onChange={(e) => {
+            {/*<FormField  label={"Search"}>*/}
+
+                <TextInput id={'search-text-input'} plain={true} onChange={(e) => {
                     searchText = e.target.value;
                     searchQuery(e.target.value);
                 }} />
-            </FormField>
+            <Heading id={'search-text-input-title'} level={5}> Search </Heading>
+            {/*</FormField>*/}
         </Box>
     );
 };

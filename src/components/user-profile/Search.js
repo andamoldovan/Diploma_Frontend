@@ -55,6 +55,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setsearchedFavoriteArticles: (articles) => {dispatch(setsearchedFavoriteArticles(articles))},
     }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileSearch);

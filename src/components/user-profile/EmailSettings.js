@@ -73,7 +73,13 @@ const EmailSettings = (props) => {
         }
     };
 
-    const currentEmail = (props.currentUser.emailSchedule === "") ? "No previous email schedule set" : props.currentUser.emailSchedule;
+    let currentEmail = '';
+    if(props.currentUser.emailSchedule === "") {
+        currentEmail = "No previous email schedule set";
+    } else{
+        currentEmail = props.currentUser.emailSchedule;
+        if(tooltip) setTooltip(false);
+    }
 
     return(
         <Box>
@@ -81,7 +87,7 @@ const EmailSettings = (props) => {
                 <Layer id={'email-settings-layer'} full={'vertical'} position={'right'} onEsc={() => props.setOpenEmailScheduler(false)} onClickOutside={() => props.setOpenEmailScheduler(false)}>
                     <Heading className={"profile-settings-heading"} level={4} alignSelf={"center"}> Email Scheduler </Heading>
                     <Box>
-                        <Heading level={5} truncate={true} style={{'maxWidth': '240px'}} onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}> Email is sent at: {currentEmail} </Heading>
+                        <Heading level={5} truncate={true} style={{'maxWidth': '240px'}} onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}> Email is set at: {currentEmail} </Heading>
                         {tooltip && <Tooltip message={"No previous email schedule set"}/>}
                     </Box>
                     <Box>

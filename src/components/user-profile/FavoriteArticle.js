@@ -8,7 +8,7 @@ import {updateFavoriteArticles} from "../api";
 const FavoriteArticle = (props) => {
 
     const {id, img, description, content, title} = props;
-    const [favoriteStatus, setFavoriteStatus] = useState({'fill' : '#FFD700'});
+    const [favoriteStatus, setFavoriteStatus] = useState({'fill' : '#f44259'});
 
     const redirectToContent = () => {
         let articleContent = {

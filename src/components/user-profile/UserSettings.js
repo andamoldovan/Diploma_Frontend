@@ -10,12 +10,14 @@ import ExpandedMenu from './ExpandedMenu';
 import CollapsedMenu from './CollapsedMenu';
 import EmailSettings from './EmailSettings';
 import logo from '../../images/logo.png';
+import {setsearchedFavoriteArticles} from "../../actions/appActions";
 
 
 const UserSettings = (props) => {
     const [buttonState, setButtonState] = useState(false);
 
     useEffect(() => {
+        props.setsearchedFavoriteArticles([]);
         if(props.currentUser === null) window.location = "http://localhost:3000";
     }, []);
 
@@ -69,4 +71,9 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, null)(UserSettings);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setsearchedFavoriteArticles: (articles) => {dispatch(setsearchedFavoriteArticles(articles))},
+    }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(UserSettings);
